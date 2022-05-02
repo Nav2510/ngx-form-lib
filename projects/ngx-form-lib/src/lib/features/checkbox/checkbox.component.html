@@ -1,0 +1,7 @@
+<div *ngIf="form && config" class="ngf-wrapper ngf-checkbox-wrapper">
+  <mat-checkbox class="ngf-checkbox" [formControlName]="config.name" [indeterminate]="true"
+    [labelPosition]="config.labelPosition? config.labelPosition : 'after'" [disabled]="false">
+    <!-- TODO: Remove hardcoded position value and move to json properties -->
+    <mat-label *ngIf="config.label" [attr.for]="config.name">{{ config.label }}</mat-label>
+  </mat-checkbox>
+</div>

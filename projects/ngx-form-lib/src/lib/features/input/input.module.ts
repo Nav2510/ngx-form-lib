@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+import { MatInputModule } from '@angular/material/input';
+
 import { InputComponent } from './input.component';
-
-
+import { ContainerModule } from '../../core/components/container/container.module';
 
 @NgModule({
-  declarations: [
-    InputComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+  declarations: [InputComponent],
+  imports: [ContainerModule, MatInputModule],
+  exports: [InputComponent],
 })
-export class InputModule { }
+export class InputModule {}

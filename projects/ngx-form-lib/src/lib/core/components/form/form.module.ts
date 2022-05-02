@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { FormComponent } from './form.component';
 import { PrefixSuffixModule } from '../../../shared/components/prefix-suffix/prefix-suffix.module';
+import { DynamicLoaderModule } from '../../directives/dynamic-loader/dynamic-loader.module';
 
 const MATERIAL_MODULES = [
   MatButtonModule,
@@ -27,6 +28,7 @@ const MATERIAL_MODULES = [
   declarations: [FormComponent],
   imports: [
     CommonModule,
+    DynamicLoaderModule,
     PrefixSuffixModule,
     ReactiveFormsModule,
     ...MATERIAL_MODULES,
