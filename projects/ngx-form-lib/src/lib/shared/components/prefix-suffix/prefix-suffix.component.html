@@ -1,0 +1,4 @@
+<mat-icon *ngIf="config.type === PrefixSuffixEnum.Icon; else span"> {{ config.value }}</mat-icon>
+<ng-template #span>
+  <span> {{ config.value }}</span>
+</ng-template>

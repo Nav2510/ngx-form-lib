@@ -1,0 +1,144 @@
+<div *ngIf="form" [formGroup]="form" class="ngf-form">
+  <div 
+    *ngFor="let config of configList" 
+    class="ngf-field-container"
+    [ngClass]="config.classes ? config.classes : ''" 
+    [ngSwitch]="config.type"
+  >
+  <!-- Input -->
+    <div *ngSwitchCase="'input'" class="ngf-wrapper ngf-input-wrapper">
+      <mat-form-field 
+        class="ngf-form-field" 
+        [appearance]="config.appearance ? config.appearance : 'standard'"
+        [color]="config.color" 
+      >
+        <mat-label *ngIf="config.label" [attr.for]="config.name">{{config.label}}</mat-label>
+        <input 
+          matInput 
+          [formControlName]="config.name" 
+          [id]="config.name" 
+          [type]="config.subType ? config.subType: 'text'"
+        >
+        <span *ngIf="config.prefix" matPrefix>
+          <lib-prefix-suffix [config]="config.prefix"></lib-prefix-suffix>
+        </span>
+        <span *ngIf="config.suffix" matSuffix>
+          <lib-prefix-suffix [config]="config.suffix"></lib-prefix-suffix>
+        </span>
+        <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
+        <mat-error class="ngf-field-error"  *ngFor="let validationItem of config.validators">
+          <ng-container 
+            *ngIf="form.controls[config.name].hasError(validationItem.type) &&
+            (form.controls[config.name].dirty || form.controls[config.name].touched)"
+          >
+            <span>{{ validationItem.message }}</span>
+            <span
+              *ngIf="validationItem.showDynamicError && this.form.controls[config.name].getError(validationItem.type)?.actualLength as actualLength">
+              {{actualLength}}/
+              {{this.form.controls[config.name].getError(validationItem.type)?.requiredLength}}
+            </span>
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Dropdown -->
+    <div *ngSwitchCase="'dropdown'" class="ngf-wrapper ngf-dropdown-wrapper">
+      <mat-form-field
+        class="ngf-form-field" 
+        [appearance]="config.appearance ? config.appearance : 'standard'"
+        [color]="config.color"
+      >
+        <mat-label *ngIf="config.label" [attr.for]="config.name">{{ config.label }}</mat-label>
+        <mat-select name="config.name" [formControlName]="config.name" [multiple]="false">
+          <!-- <mat-select-trigger>
+            TODO: Added select trigger for multiple and custom value
+          </mat-select-trigger> -->
+          <mat-option *ngFor="let option of config.options" [value]="option.value">{{ option.label }}</mat-option>
+        </mat-select>
+        <span *ngIf="config.prefix" matPrefix>
+          <lib-prefix-suffix [config]="config.prefix"></lib-prefix-suffix>
+        </span>
+        <span *ngIf="config.suffix" matSuffix>
+          <lib-prefix-suffix [config]="config.suffix"></lib-prefix-suffix>
+        </span>
+        <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
+        <mat-error *ngFor="let validationItem of config.validators">
+          <ng-container *ngIf="form.controls[config.name].hasError(validationItem.type) &&
+                    (form.controls[config.name].dirty || form.controls[config.name].touched)">
+            {{ validationItem.message }}
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Checkbox -->
+    <div *ngSwitchCase="'checkbox'" class="ngf-wrapper ngf-checkbox-wrapper">
+      <mat-checkbox class="ngf-checkbox"
+        [formControlName]="config.name" 
+        [indeterminate]="true"
+        [labelPosition]="config.labelPosition? config.labelPosition : 'after'" 
+        [disabled]="false"
+      >
+      <!-- TODO: Remove hardcoded position value and move to json properties -->
+        <mat-label *ngIf="config.label"  [attr.for]="config.name">{{ config.label }}</mat-label>
+      </mat-checkbox>
+    </div>
+
+    <!-- Radio -->
+    <div *ngSwitchCase="'radio'" class="ngf-wrapper ngf-radio-wrapper">
+      <label *ngIf="config.label" [attr.for]="config.name">{{config.label}}</label>
+      <mat-radio-group 
+        class="ngf-radio-group" 
+        [ngClass]="{'ngf-inline': config.showInline}" 
+        [formControlName]="config.name"
+      >
+        <mat-radio-button 
+          *ngFor="let option of config.options"
+          class="ngf-radio-button" 
+          [value]="option.value"
+        >
+          {{option.label}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!-- Textarea -->
+    <div *ngSwitchCase="'textarea'" class="ngf-wrapper ngf-textarea-wrapper">
+      <mat-form-field 
+        class="ngf-form-field"
+        [appearance]="config.appearance ? config.appearance : 'standard'"
+        [color]="config.color"
+      >
+        <mat-label [attr.for]="config.name">{{config.label}}</mat-label>
+        <textarea matInput class="form-control" [formControlName]="config.name" [id]="config.name"
+          [placeholder]="config.placeholder" rows="5"></textarea>
+        <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
+        <span *ngIf="config.prefix" matPrefix>
+          <lib-prefix-suffix [config]="config.prefix"></lib-prefix-suffix>
+        </span>
+        <span *ngIf="config.suffix" matSuffix>
+          <lib-prefix-suffix [config]="config.suffix"></lib-prefix-suffix>
+        </span>
+        <!-- TODO: Try moving mat-error to a component and implement dynamic error message -->
+        <mat-error class="ngf-field-error" *ngFor="let validationItem of config.validators">
+          <ng-container *ngIf="form.controls[config.name].hasError(validationItem.type) &&
+                        (form.controls[config.name].dirty || form.controls[config.name].touched)"
+          >
+            <span>{{ validationItem.message }}</span>
+            <span *ngIf="validationItem.showDynamicError && this.form.controls[config.name].getError(validationItem.type)?.actualLength as actualLength">
+              {{actualLength}}/
+              {{this.form.controls[config.name].getError(validationItem.type)?.requiredLength}}
+            </span>
+          </ng-container>
+        </mat-error>
+        
+      </mat-form-field>
+    </div>
+    
+    <!-- Button -->
+    <div *ngSwitchCase="'button'" class="ngf-wrapper ngf-button-wrapper">
+      <button type="config.subType" mat-raised-button color="primary">{{ config.label }}</button>
+    </div>
+  </div>
+</div>

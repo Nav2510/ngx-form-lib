@@ -1,0 +1,80 @@
+.ngf-col-12 {
+  width: 100%;
+}
+
+.ngf-col-10 {
+  width: 83.33%;
+}
+
+.ngf-col-8 {
+  width: 66.67%;
+}
+
+.ngf-col-6 {
+  width: 50%;
+}
+
+.ngf-col-4 {
+  width: 33.33%;
+}
+
+.ngf-col-3 {
+  width: 25%;
+}
+
+.ngf-col-2 {
+  width: 16.67%;
+}
+
+.ngf-col-2 {
+  width: 8.33%;
+}
+
+.ngf-form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  .ngf-field-container {
+    padding: 5px 10px;
+    box-sizing: border-box;
+    .ngf-wrapper {
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+
+  .ngf-radio-wrapper {
+    .ngf-radio-group {
+      display: flex;
+      flex-direction: column;
+      margin: 15px 0;
+      align-items: flex-start;
+    }
+
+    .ngf-radio-group.ngf-inline {
+      display: flex;
+      flex-direction: row;
+    }
+    
+    .ngf-radio-button {
+      margin: 5px;
+    }
+  }
+  .ngf-button-wrapper {
+    button {
+      width: 100%;
+    }
+  }
+}
+
+.ngf-form-field {
+  .mat-form-field-suffix,
+  .mat-form-field.prefix {
+    align-self: center !important;
+  }
+  .ngf-field-error {
+    display: flex;
+    justify-content: space-between;
+  }
+} 
