@@ -1,5 +1,10 @@
-<div [formGroup]="form" class="ngf-form">
-  <ng-template #dynamicComponent></ng-template>
-</div>
-
-<!-- class="ngf-field-container" -->
+<form [formGroup]="form" class="ngf-form">
+  <div 
+    style="border: 1px solid red"
+    *ngFor="let configItem of configList" 
+    class="ngf-field-container"
+    [ngClass]="configItem.classes ? configItem.classes : ''" 
+  >
+    <lib-container [config]="configItem" [form]="form"></lib-container>
+  </div>
+</form>
