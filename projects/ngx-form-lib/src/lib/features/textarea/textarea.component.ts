@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { BaseComponent } from '../../core/components/base/base.component';
 
 @Component({
-  selector: 'lib-textarea',
+  selector: 'ngf-textarea',
   templateUrl: './textarea.component.html',
-  styleUrls: ['./textarea.component.css']
+  styleUrls: ['./textarea.component.scss']
 })
-export class TextareaComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class TextareaComponent extends BaseComponent{}

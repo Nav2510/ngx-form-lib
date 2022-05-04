@@ -1,0 +1,17 @@
+.ngf-radio-wrapper {
+  .ngf-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+  }
+
+  .ngf-radio-group.ngf-inline {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .ngf-radio-button {
+    margin: 5px;
+  }
+}

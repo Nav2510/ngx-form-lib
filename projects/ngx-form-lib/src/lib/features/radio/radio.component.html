@@ -1,0 +1,9 @@
+<div *ngIf="form && config" [formGroup]="form" class="ngf-wrapper ngf-radio-wrapper">
+  <label *ngIf="config.label" [attr.for]="config.name">{{config.label}}</label>
+  <mat-radio-group class="ngf-radio-group" [ngClass]="{'ngf-inline': config.showInline}"
+    [formControlName]="config.name">
+    <mat-radio-button *ngFor="let option of config.options" class="ngf-radio-button" [value]="option.value">
+      {{option.label}}
+    </mat-radio-button>
+  </mat-radio-group>
+</div>

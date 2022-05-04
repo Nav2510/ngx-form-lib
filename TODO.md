@@ -1,7 +1,11 @@
 # TODO List
 
+## Styles
+1. Setup global styles in library with variables and imports
+
 ## Models
 1. Create function and use only valid json configuration as input
+2. Remove all types and change it to Enum.
 
 ## Validators
 1. Add all validators with error messages

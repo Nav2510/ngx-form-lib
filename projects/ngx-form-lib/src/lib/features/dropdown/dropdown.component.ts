@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
+import { BaseComponent } from '../../core/components/base/base.component';
 @Component({
   selector: 'lib-dropdown',
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.css']
+  styleUrls: ['./dropdown.component.scss']
 })
-export class DropdownComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class DropdownComponent extends BaseComponent{
+  
 }

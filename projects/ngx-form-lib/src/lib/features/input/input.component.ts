@@ -1,13 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { BaseComponent } from '../../core/components/base/base.component';
 
 @Component({
-  selector: 'lib-input',
+  selector: 'ngf-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.css']
+  styleUrls: ['./input.component.scss'],
 })
-export class InputComponent implements OnInit {
-
-  ngOnInit(): void {
-  }
-
-}
+export class InputComponent extends BaseComponent{}
