@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { BaseComponent } from '../../core/components/base/base.component';
 
 @Component({
-  selector: 'lib-input',
+  selector: 'ngf-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
 })

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { BaseComponent } from '../../core/components/base/base.component';
 
 @Component({
-  selector: 'lib-textarea',
+  selector: 'ngf-textarea',
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.scss']
 })

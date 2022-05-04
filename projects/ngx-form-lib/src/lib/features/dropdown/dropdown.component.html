@@ -9,10 +9,10 @@
       <mat-option *ngFor="let option of config.options" [value]="option.value">{{ option.label }}</mat-option>
     </mat-select>
     <span *ngIf="config.prefix" matPrefix>
-      <lib-prefix-suffix [config]="config.prefix"></lib-prefix-suffix>
+      <ngf-prefix-suffix [config]="config.prefix"></ngf-prefix-suffix>
     </span>
     <span *ngIf="config.suffix" matSuffix>
-      <lib-prefix-suffix [config]="config.suffix"></lib-prefix-suffix>
+      <ngf-prefix-suffix [config]="config.suffix"></ngf-prefix-suffix>
     </span>
     <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
     <mat-error *ngFor="let validationItem of config.validators">

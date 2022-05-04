@@ -20,7 +20,7 @@ const componentMapping: { [key: string]: any } = {
 };
 
 @Component({
-  selector: 'lib-container',
+  selector: 'ngf-container',
   template: ` <ng-template #dynamicComponent></ng-template>`,
 })
 export class ContainerComponent implements OnInit {

@@ -6,10 +6,10 @@
       [placeholder]="config.placeholder" rows="5"></textarea>
     <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
     <span *ngIf="config.prefix" matPrefix>
-      <lib-prefix-suffix [config]="config.prefix"></lib-prefix-suffix>
+      <ngf-prefix-suffix [config]="config.prefix"></ngf-prefix-suffix>
     </span>
     <span *ngIf="config.suffix" matSuffix>
-      <lib-prefix-suffix [config]="config.suffix"></lib-prefix-suffix>
+      <ngf-prefix-suffix [config]="config.suffix"></ngf-prefix-suffix>
     </span>
     <!-- TODO: Try moving mat-error to a component and implement dynamic error message -->
     <mat-error class="ngf-field-error" *ngFor="let validationItem of config.validators">
