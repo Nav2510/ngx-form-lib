@@ -195,7 +195,7 @@ export const getFields = function() {
       subType: 'button',
       color: 'primary',
       order: 7,
-      classes: ['ngf-col-1'],
+      classes: ['ngf-col-1', 'ngf-fit-content'],
     }),
     new FormField({
       label: 'Submit',
@@ -204,7 +204,7 @@ export const getFields = function() {
       subType: 'submit',
       color: 'accent',
       order: 8,
-      classes: ['ngf-col-1'],
+      classes: ['ngf-col-1', 'ngf-fit-content'],
       value: 'Submit this form',
     }),
   ];

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { FormField } from '../../../shared/models/form-field.model';
@@ -8,6 +8,7 @@ import { FormsService } from '../../services/forms.service';
   selector: 'ngx-form-lib',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class FormComponent implements OnInit {
   @Input() configList: FormField<string>[] = {} as FormField<string>[];

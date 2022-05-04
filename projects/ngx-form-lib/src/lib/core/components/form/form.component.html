@@ -1,6 +1,5 @@
 <form [formGroup]="form" class="ngf-form">
   <div 
-    style="border: 1px solid red"
     *ngFor="let configItem of configList" 
     class="ngf-field-container"
     [ngClass]="configItem.classes ? configItem.classes : ''" 
