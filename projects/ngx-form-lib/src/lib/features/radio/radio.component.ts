@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { ContainerComponent } from '../../core/components/container/container.component';
+import { BaseComponent } from '../../core/components/base/base.component';
 
 @Component({
-  selector: 'lib-radio',
+  selector: 'ngf-radio',
   templateUrl: './radio.component.html',
   styleUrls: ['./radio.component.scss']
 })
-export class RadioComponent extends ContainerComponent{}
+export class RadioComponent extends BaseComponent{}

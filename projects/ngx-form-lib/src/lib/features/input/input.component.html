@@ -1,13 +1,13 @@
-<div *ngIf="config && form" [formGroup]="form" class="ngf-wrapper ngf-input-wrapper">
+<div [formGroup]="form" class="ngf-wrapper ngf-input-wrapper">
   <mat-form-field class="ngf-form-field" [appearance]="config.appearance ? config.appearance : 'standard'"
     [color]="config.color">
     <mat-label *ngIf="config.label" [attr.for]="config.name">{{config.label}}</mat-label>
     <input matInput [formControlName]="config.name" [id]="config.name" [type]="config.subType ? config.subType: 'text'">
     <span *ngIf="config.prefix" matPrefix>
-      <lib-prefix-suffix [config]="config.prefix"></lib-prefix-suffix>
+      <ngf-prefix-suffix [config]="config.prefix"></ngf-prefix-suffix>
     </span>
     <span *ngIf="config.suffix" matSuffix>
-      <lib-prefix-suffix [config]="config.suffix"></lib-prefix-suffix>
+      <ngf-prefix-suffix [config]="config.suffix"></ngf-prefix-suffix>
     </span>
     <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
     <mat-error class="ngf-field-error" *ngFor="let validationItem of config.validators">

@@ -122,34 +122,34 @@ export const getFields = function() {
       order: 4,
     }),
 
-    new FormField<string>({
-      appearance: 'standard',
-      type: 'dropdown',
-      name: 'country',
-      label: 'Country',
-      prefix: {
-        type: 'icon',
-        value: 'info',
-      },
-      suffix: {
-        type: 'string',
-        value: 'USD',
-      },
-      classes: ['ngf-col-6'],
-      options: [
-        { value: 'usa', label: 'United States of America' },
-        { value: 'br', label: 'Brazil' },
-        { value: 'other', label: 'Other' },
-      ],
-      order: 5,
-      validators: [
-        {
-          type: 'required',
-          value: true,
-          message: 'Please select any value',
-        },
-      ],
-    }),
+    // new FormField<string>({
+    //   appearance: 'standard',
+    //   type: 'dropdown',
+    //   name: 'country',
+    //   label: 'Country',
+    //   prefix: {
+    //     type: 'icon',
+    //     value: 'info',
+    //   },
+    //   suffix: {
+    //     type: 'string',
+    //     value: 'USD',
+    //   },
+    //   classes: ['ngf-col-6'],
+    //   options: [
+    //     { value: 'usa', label: 'United States of America' },
+    //     { value: 'br', label: 'Brazil' },
+    //     { value: 'other', label: 'Other' },
+    //   ],
+    //   order: 5,
+    //   validators: [
+    //     {
+    //       type: 'required',
+    //       value: true,
+    //       message: 'Please select any value',
+    //     },
+    //   ],
+    // }),
 
     new FormField<string>({
       type: 'checkbox',
@@ -193,16 +193,18 @@ export const getFields = function() {
       type: 'button',
       name: 'hideName',
       subType: 'button',
+      color: 'primary',
       order: 7,
-      classes: ['ngf-col-1'],
+      classes: ['ngf-col-1', 'ngf-fit-content'],
     }),
     new FormField({
       label: 'Submit',
       type: 'button',
       name: 'submit',
       subType: 'submit',
+      color: 'accent',
       order: 8,
-      classes: ['ngf-col-1'],
+      classes: ['ngf-col-1', 'ngf-fit-content'],
       value: 'Submit this form',
     }),
   ];

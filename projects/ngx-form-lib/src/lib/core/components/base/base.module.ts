@@ -4,20 +4,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-import { ContainerComponent } from './container.component';
+import { BaseComponent } from './base.component';
 import { PrefixSuffixModule } from '../../../shared/components/prefix-suffix/prefix-suffix.module';
 
-
-const MODULES = [
-  CommonModule,
-  ReactiveFormsModule,
-  MatFormFieldModule,
-  PrefixSuffixModule,
-];
+const MODULES = [MatFormFieldModule, PrefixSuffixModule, ReactiveFormsModule];
 
 @NgModule({
-  declarations: [ContainerComponent],
-  imports: MODULES,
-  exports: [ContainerComponent, MODULES],
+  declarations: [BaseComponent],
+  imports: [CommonModule, ...MODULES],
+  exports: [BaseComponent, ...MODULES],
 })
-export class ContainerModule {}
+export class BaseModule {}
