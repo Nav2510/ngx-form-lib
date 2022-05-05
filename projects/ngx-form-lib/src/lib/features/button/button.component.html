@@ -1,3 +1,9 @@
 <div *ngIf="config" class="ngf-wrapper ngf-button-wrapper">
-  <button [type]="config.subType" mat-raised-button [color]="config.color">{{ config.label }}</button>
+  <button 
+    [type]="config.subType" 
+    mat-raised-button 
+    [color]="parentConfig | setParentConfig: config : 'color'"
+  >
+    {{ config.label }}
+  </button>
 </div>

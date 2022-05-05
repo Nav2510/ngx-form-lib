@@ -1,9 +1,20 @@
-<form [formGroup]="form" class="ngf-form">
-  <div 
-    *ngFor="let configItem of configList" 
-    class="ngf-field-container"
-    [ngClass]="configItem.classes ? configItem.classes : ''" 
-  >
-    <ngf-container [config]="configItem" [form]="form"></ngf-container>
-  </div>
-</form>
+<div class="ngf-form-container">
+  <h3 class="ngf-h3 ngf-form-header">{{ config.header }}</h3>
+  <form [formGroup]="form" class="ngf-form">
+    <ng-container formArrayName="sections">
+      <section 
+      class="ngf-section-wrapper" 
+      *ngFor="let sectionItem of config.sections; let i = index"
+      [formGroupName]="i"
+      > 
+      <h4 class="ngf-h4" *ngIf="sectionItem.sectionHeader">{{ sectionItem.sectionHeader }}</h4>
+      <div class="ngf-section">
+        <div *ngFor="let configItem of sectionItem.fields" class="ngf-field-container" [ngClass]="configItem.classes">
+          <ngf-container [parentConfig]="config.parentConfig" [config]="configItem" [form]="getFormControl('sections', i)">
+          </ngf-container>
+        </div>
+      </div>
+      </section>
+    </ng-container>
+  </form>
+</div>

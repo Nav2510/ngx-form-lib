@@ -8,6 +8,7 @@ import { InputComponent } from '../../features/input/input.component';
 import { RadioComponent } from '../../features/radio/radio.component';
 import { TextareaComponent } from '../../features/textarea/textarea.component';
 import { FormField } from '../../shared/models/form-field.model';
+import { ParentConfig } from '../../shared/models/parent-config.model';
 import { BaseComponent } from '../components/base/base.component';
 
 // TODO: update to { [key in FieldTypeEnum]: any }
@@ -27,6 +28,7 @@ const componentMapping: { [key: string]: any } = {
 export class ContainerComponent implements OnInit {
   @Input() config: FormField<string> = {} as FormField<string>;
   @Input() form: FormGroup | null = null;
+  @Input() parentConfig: ParentConfig | null = null;
   @ViewChild('dynamicComponent', { static: true, read: ViewContainerRef }) dynamicComponent!: ViewContainerRef;
 
   ngOnInit(): void {
@@ -39,6 +41,7 @@ export class ContainerComponent implements OnInit {
 
       componentRef.instance.config = this.config;
       componentRef.instance.form = this.form;
+      componentRef.instance.parentConfig = this.parentConfig;
     }
   }
 }

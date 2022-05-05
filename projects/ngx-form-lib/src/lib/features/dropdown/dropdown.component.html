@@ -1,6 +1,9 @@
 <div *ngIf="form && config" [formGroup]="form" class="ngf-wrapper ngf-dropdown-wrapper">
-  <mat-form-field class="ngf-form-field" [appearance]="config.appearance"
-    [color]="config.color">
+  <mat-form-field 
+      class="ngf-form-field" 
+      [appearance]="parentConfig | setParentConfig: config : 'appearance'"
+      [color]="parentConfig | setParentConfig: config : 'color'"
+    >
     <mat-label *ngIf="config.label" [attr.for]="config.name">{{ config.label }}</mat-label>
     <mat-select name="config.name" [formControlName]="config.name" [multiple]="false">
       <!-- <mat-select-trigger>

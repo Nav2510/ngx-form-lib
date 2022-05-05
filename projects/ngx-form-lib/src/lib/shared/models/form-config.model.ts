@@ -1,7 +1,9 @@
-import { FormField } from "./form-field.model";
+import { FormSection } from "./form-section.model";
+import { ParentConfig } from "./parent-config.model";
 
 export interface FormConfig {
+  sections: FormSection[];
+  dependency?: FormConfig;
   header?: string;
-  config: FormField<any>[];
-  dependency: FormConfig;
+  parentConfig: ParentConfig
 }
