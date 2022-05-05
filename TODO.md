@@ -4,8 +4,8 @@
 1. Setup global styles in library with variables and imports
 
 ## Models
-1. Create function and use only valid json configuration as input
-2. Remove all types and change it to Enum.
+1. Remove all types and change it to Enum.
+2. Add sort by order in mock
 
 ## Validators
 1. Add all validators with error messages
@@ -18,6 +18,7 @@
 4. Add aria-label supports in library.
 5. Add select trigger for multiple and custom value
 6. Add appearance for form which can be override from fields appearance.
+7. Fix `dropdown` component
 
 # Add Ons
 1. Implenting nested forms.

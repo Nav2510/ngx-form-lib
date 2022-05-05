@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { ButtonComponent } from '../../features/button/button.component';
@@ -8,6 +8,7 @@ import { InputComponent } from '../../features/input/input.component';
 import { RadioComponent } from '../../features/radio/radio.component';
 import { TextareaComponent } from '../../features/textarea/textarea.component';
 import { FormField } from '../../shared/models/form-field.model';
+import { BaseComponent } from '../components/base/base.component';
 
 // TODO: update to { [key in FieldTypeEnum]: any }
 const componentMapping: { [key: string]: any } = {
@@ -34,7 +35,7 @@ export class ContainerComponent implements OnInit {
 
   private loadDynamicFields(): void {
     if (this.dynamicComponent && this.config?.type) {
-      const componentRef = this.dynamicComponent.createComponent(componentMapping[this.config.type]) as any;
+      const componentRef = this.dynamicComponent.createComponent(componentMapping[this.config.type]) as ComponentRef<BaseComponent>;
 
       componentRef.instance.config = this.config;
       componentRef.instance.form = this.form;

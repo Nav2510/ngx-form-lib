@@ -1,8 +1,8 @@
-<div [formGroup]="form" class="ngf-wrapper ngf-input-wrapper">
-  <mat-form-field class="ngf-form-field" [appearance]="config.appearance ? config.appearance : 'standard'"
+<div *ngIf="form && config" [formGroup]="form" class="ngf-wrapper ngf-input-wrapper">
+  <mat-form-field class="ngf-form-field" [appearance]="config.appearance"
     [color]="config.color">
     <mat-label *ngIf="config.label" [attr.for]="config.name">{{config.label}}</mat-label>
-    <input matInput [formControlName]="config.name" [id]="config.name" [type]="config.subType ? config.subType: 'text'">
+    <input matInput [formControlName]="config.name" [id]="config.name" [type]="config.subType">
     <span *ngIf="config.prefix" matPrefix>
       <ngf-prefix-suffix [config]="config.prefix"></ngf-prefix-suffix>
     </span>
