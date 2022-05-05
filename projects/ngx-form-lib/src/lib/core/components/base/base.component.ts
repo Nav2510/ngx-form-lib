@@ -7,6 +7,6 @@ import { FormField } from '../../../shared/models/form-field.model';
   template: ''
 })
 export class BaseComponent {
-  @Input() config: FormField<string> =  {} as FormField<string>;
-  @Input() form: FormGroup = {} as FormGroup;
+  @Input() config: FormField<string> | null =  null;
+  @Input() form: FormGroup | null = null;
 }
