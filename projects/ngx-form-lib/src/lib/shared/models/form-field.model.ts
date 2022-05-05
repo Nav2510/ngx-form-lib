@@ -4,9 +4,9 @@ import { FieldType } from "./field-type.model";
 import { Validation } from "./validation.model";
 
 export class FormField<T> {
-  appearance: Appearance;
+  appearance: Appearance | undefined;
   classes: string[];
-  color: Color;
+  color: Color | undefined;
   hint: string;
   label: string;
   method: (param?: any) => any;
@@ -33,9 +33,9 @@ export class FormField<T> {
       validators?: Validation[];
     } = {}
   ) {
-    this.appearance = params.appearance || AppearanceEnum.Standard;
+    this.appearance = params.appearance;
     this.classes = params.classes || [];
-    this.color = params.color || ColorEnum.Primary;
+    this.color = params.color;
     this.hint = params.hint || '';
     this.label = params.label || '';
     this.method = params.method === undefined ? () => {} : params.method;

@@ -1,6 +1,9 @@
 <div *ngIf="config && form" [formGroup]="form" class="ngf-wrapper ngf-textarea-wrapper">
-  <mat-form-field class="ngf-form-field" [appearance]="config.appearance ? config.appearance : 'standard'"
-    [color]="config.color">
+  <mat-form-field 
+    class="ngf-form-field" 
+    [appearance]="parentConfig | setParentConfig: config : 'appearance'"
+    [color]="parentConfig | setParentConfig: config : 'color'"
+  >
     <mat-label [attr.for]="config.name">{{config.label}}</mat-label>
     <textarea matInput class="form-control" [formControlName]="config.name" [id]="config.name"
       [placeholder]="config.placeholder" rows="5"></textarea>

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
 
-import { FormField } from '../../../shared/models/form-field.model';
+import { FormConfig } from '../../../shared/models/form-config.model';
 import { FormsService } from '../../services/forms.service';
 
 @Component({
@@ -11,14 +11,20 @@ import { FormsService } from '../../services/forms.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class FormComponent implements OnInit {
-  @Input() configList: FormField<string>[] = {} as FormField<string>[];
+  @Input() config: FormConfig;
   @Input() form: FormGroup = {} as FormGroup;
 
-  constructor(private formService: FormsService) {}
+  constructor(private formService: FormsService) {
+    this.config = this.formService.getFormConfig();
+  }
 
   ngOnInit(): void {
-    this.configList = this.formService.getFormFields();
-    this.form = this.formService.initForm(this.configList);
+    this.form = this.formService.initForm(this.config.sections);
     this.form.valueChanges.subscribe(() => console.log(this.form));
+  }
+
+  getFormControl(formGroupName: string, index: number): FormGroup {
+    // TODO: Check if it can be optimized or not
+    return (this.form.get(`${formGroupName}.${index}`) as FormGroup);
   }
 }

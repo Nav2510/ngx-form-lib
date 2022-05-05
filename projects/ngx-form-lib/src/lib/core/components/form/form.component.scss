@@ -1,11 +1,39 @@
 @import "../../../../../styles";
 
-.ngf-form {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  .ngf-field-container {
-    padding: 10px 15px;
-    box-sizing: border-box;
+.ngf-form-container {
+  color: $black-500;
+  background-color: $black-050;
+  .ngf-form-header {
+    text-transform: uppercase;
+    padding: 25px 15px 20px 15px;
+    color: $black-100;
+    background-color: $primary;
+    border-radius: 5px 5px 0px 0px;
+    margin: 0px;
   }
-}
+
+  .ngf-form {
+    padding: 10px;
+  
+    .ngf-section-wrapper {
+      background-color: $black-000;
+      border-radius: 5px;
+
+      .ngf-h4 {
+        padding: 20px 15px;
+        border-bottom: 1px solid $black-100;
+      }
+      .ngf-section {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px 0px;
+  
+        .ngf-field-container {
+          padding: 10px 15px;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+  }

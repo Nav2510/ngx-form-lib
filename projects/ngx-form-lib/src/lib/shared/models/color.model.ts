@@ -1,7 +1,8 @@
 export enum ColorEnum {
-  Primary = 'primary',
   Accent = 'accent',
-  Warning = 'warning',
+  Basic = '',
+  Primary = 'primary',
+  Warning = 'warn',
 }
 
-export type Color = 'primary' | 'accent' | 'warning';
+export type Color = 'accent' | '' | 'primary' | 'warn';

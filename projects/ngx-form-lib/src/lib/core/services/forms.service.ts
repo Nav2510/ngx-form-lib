@@ -1,24 +1,30 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 import { Validation } from '../../shared/models/validation.model';
-import { FormField } from '../../shared/models/form-field.model';
 import { ValidationTypeEnum } from '../../shared/models/validation-type.model';
-import { getFields } from '../mocks/form.mock';
+import { getFormData } from '../mocks/form.mock';
+import { FormConfig } from '../../shared/models/form-config.model';
+import { FormSection } from '../../shared/models/form-section.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormsService {
-  initForm(config: FormField<string>[]): FormGroup {
-    const group: { [key: string]: FormControl } = {};
-    config.forEach((config) => {
-      group[config.name] = new FormControl(
-        config.value,
-        config.validators ? this.createValidations(config.validators) : null
-      );
-    });
-    return new FormGroup(group);
+  initForm(sections: FormSection[]): FormGroup {
+    const list: FormGroup[] = [];
+    sections.forEach((sectionItem) => {
+      const group: { [key: string]: FormControl } = {};
+      sectionItem.fields.forEach((config) => {
+        group[config.name] = new FormControl(
+          config.value,
+          config.validators ? this.createValidations(config.validators) : null
+        );
+      });
+      list.push(new FormGroup(group))
+    })
+
+    return new FormGroup({sections: new FormArray(list)});
   }
 
   createValidations(validators: Validation[]): ValidatorFn[] | null {
@@ -61,7 +67,7 @@ export class FormsService {
     return validatorsList;
   }
 
-  getFormFields(): FormField<string>[] {
-    return getFields();
+  getFormConfig(): FormConfig {
+    return getFormData();
   }
 }
