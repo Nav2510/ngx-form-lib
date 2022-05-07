@@ -21,6 +21,7 @@
 6. Add appearance for form which can be override from fields appearance.
 7. Fix `dropdown` component
 8. Set `mat-button` dynamically
+9. Check for all the `TODO` comments
 
 # Add Ons
 1. Implenting nested forms.

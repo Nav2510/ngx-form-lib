@@ -1,5 +1,7 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
+
 
 import { FormConfig } from '../../../shared/models/form-config.model';
 import { FormsService } from '../../services/forms.service';
@@ -10,21 +12,34 @@ import { FormsService } from '../../services/forms.service';
   styleUrls: ['./form.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class FormComponent implements OnInit {
-  @Input() config: FormConfig;
-  @Input() form: FormGroup = {} as FormGroup;
+export class FormComponent implements OnInit, OnDestroy {
+  @Input() config: FormConfig = {} as FormConfig;
+  @Output() valueChanges = new EventEmitter<any>();
+  @Output() formSubmit = new EventEmitter<void>();
 
-  constructor(private formService: FormsService) {
-    this.config = this.formService.getFormConfig();
-  }
+  form: FormGroup = {} as FormGroup;
+  private readonly destroy$ = new Subject<void>()
+
+  constructor(private formService: FormsService) {}
 
   ngOnInit(): void {
     this.form = this.formService.initForm(this.config.sections);
-    this.form.valueChanges.subscribe(() => console.log(this.form));
+    this.form.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.valueChanges.emit(this.form.value);
+    });
   }
 
   getFormControl(formGroupName: string, index: number): FormGroup {
     // TODO: Check if it can be optimized or not
-    return (this.form.get(`${formGroupName}.${index}`) as FormGroup);
+    return this.form.get(`${formGroupName}.${index}`) as FormGroup;
+  }
+
+  onSubmit(): void {
+    this.formSubmit.emit();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(undefined);
+    this.destroy$.complete();
   }
 }

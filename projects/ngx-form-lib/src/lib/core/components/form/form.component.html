@@ -1,6 +1,6 @@
 <div class="ngf-form-container">
   <h3 class="ngf-h3 ngf-form-header">{{ config.header }}</h3>
-  <form [formGroup]="form" class="ngf-form">
+  <form class="ngf-form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <ng-container formArrayName="sections">
       <section 
       class="ngf-section-wrapper" 
