@@ -1,74 +1,27 @@
 # FormLibWorkspace
 
-This project let you create different angular forms with all the features of angular reactive by providing basic class configuration. It user angular materials under the hook taking advantage of angualar themes.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
 
+## Development server
 
-## Installation
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-1. In you angular project run command `npm install --save ngx-form-lib` and install the package.
-2. This library use [Angular material](https://material.angular.io/) for themes. So, if you have already setup `Angular material` skip step 3
-3. You also need to install `peer dependencies`. [Installing npm peer dependencies](https://www.npmjs.com/package/npm-install-peers)
-4. Setup angular material in your project. [Getting started guide](https://material.angular.io/guide/getting-started)
-5. Import `FormLibModule` from `ngx-form-lib` and add it into the imports array of your module.
-```
-import { NgModule } from '@angular/core';
-import { FormLibModule } from 'ngx-form-lib';
+## Code scaffolding
 
-import { CommonModule } from '@angular/common';
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-@NgModule({
-  declarations: [HomeComponent],
-  imports: [
-    CommonModule,
-    FormLibModule,
-  ],
-})
-export class HomeModule {}
-```
-6. Create a constant file with form configuration. Ide support will provide with autofill for various properties.
-```
-import { ParentConfig, Input, FormField, FormConfig } from "ngx-form-lib";
+## Build
 
-export const CONFIG: FormConfig = {
-    header: 'Form Header',
-    parentConfig: new ParentConfig({
-      appearance: 'fill',
-      color: 'primary',
-    }),
-    sections: [
-      {
-        sectionHeader: 'Section Header',
-        fields: [
-          new Input({
-            subType: 'text',
-            field: new FormField({
-              type: 'input',
-              name: 'money',
-              label: 'Enter your name',
-              order: 1,
-              classes: ['ngf-col-12'],
-            }),
-          }),
-        ],
-      },
-    ],
-  };
-  ```
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+## Running unit tests
 
-7. Bind the configuration with `config` property of `ngx-for-lib` component.
-```
-<ngx-form-lib [config]="CONFIG"></ngx-form-lib>
-```
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## List of supported component
+## Running end-to-end tests
 
-1. Input
-2. Textarea
-3. Checkbox
-4. Radio
-5. Button
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Further help
 
-To get more help, issues or any suggestions for the `ngx-form-lib` mail to  `singh.navdeep2510@gmail.com` with subject `ngx-form-lib`.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
