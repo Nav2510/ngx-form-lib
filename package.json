@@ -1,5 +1,5 @@
 {
-  "name": "form-lib-workspace",
+  "name": "ngx-form-lib",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

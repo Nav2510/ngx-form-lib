@@ -3,8 +3,6 @@ import { FormArray, FormControl, FormGroup, ValidatorFn, Validators } from '@ang
 
 import { Validation } from '../../shared/models/validation.model';
 import { ValidationTypeEnum } from '../../shared/models/validation-type.model';
-import { getFormData } from '../mocks/form.mock';
-import { FormConfig } from '../../shared/models/form-config.model';
 import { FormSection } from '../../shared/models/form-section.model';
 
 @Injectable({
@@ -65,9 +63,5 @@ export class FormsService {
       }
     }
     return validatorsList;
-  }
-
-  getFormConfig(): FormConfig {
-    return getFormData();
   }
 }
