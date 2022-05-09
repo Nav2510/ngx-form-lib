@@ -1,16 +1,22 @@
-# FormLibWorkspace
+![alt text](https://github.com/Nav2510/form-lib-workspace/blob/develop/src/assets/icons/logo-lg.svg?raw=true)
 
-This project let you create different angular forms with all the features of angular reactive by providing basic class configuration. It user angular materials under the hook taking advantage of angualar themes.
+**Build dynamic form in Angular, easy and fast.**
+
+This project let you create different angular forms with all the features of angular reactive by providing basic class configuration. It user angular materials under the hook taking advantage of material themes.
+
+## Homepage
+
+Configure you form directly on [NgxFormLib](https://ngx-form-lib.web.app/) or play with forms on [Stackblitz](https://stackblitz.com/edit/angular-ivy-5hodcd)
 
 
 ## Installation
 
-1. In you angular project run command `npm install --save ngx-form-lib` and install the package.
-2. This library use [Angular material](https://material.angular.io/) for themes. So, if you have already setup `Angular material` skip step 3
-3. You also need to install `peer dependencies`. [Installing npm peer dependencies](https://www.npmjs.com/package/npm-install-peers)
-4. Setup angular material in your project. [Getting started guide](https://material.angular.io/guide/getting-started)
+1. In your angular project run command `npm install --save ngx-form-lib` and install the package.
+2. This library use [Angular material](https://material.angular.io/) for themes. So, if you have already setup `Angular material` skip step 3.
+3. You also need to install `peer dependencies`. [Installing npm peer dependencies](https://www.npmjs.com/package/npm-install-peers).
+4. Setup angular material in your project. [Getting started guide](https://material.angular.io/guide/getting-started).
 5. Import `FormLibModule` from `ngx-form-lib` and add it into the imports array of your module.
-```
+```javascript
 import { NgModule } from '@angular/core';
 import { FormLibModule } from 'ngx-form-lib';
 
@@ -25,8 +31,8 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeModule {}
 ```
-6. Create a constant file with form configuration. Ide support will provide with autofill for various properties.
-```
+6. Create a constant file with form configuration. You can directly create form configuration on [NgxFormLib webpage](https://ngx-form-lib.web.app/) and use it in your projects. IDE support will provide with autofill for various properties.
+```javascript
 import { ParentConfig, Input, FormField, FormConfig } from "ngx-form-lib";
 
 export const CONFIG: FormConfig = {
@@ -57,7 +63,7 @@ export const CONFIG: FormConfig = {
 
 
 7. Bind the configuration with `config` property of `ngx-for-lib` component.
-```
+```html
 <ngx-form-lib [config]="CONFIG"></ngx-form-lib>
 ```
 
@@ -69,6 +75,10 @@ export const CONFIG: FormConfig = {
 4. Radio
 5. Button
 
+## Style error fix
+
+If you find breaking style with material form just install `peer dependencies` manually and rerun the project.
+
 ## Further help
 
-To get more help, issues or any suggestions for the `ngx-form-lib` mail to  `singh.navdeep2510@gmail.com` with subject `ngx-form-lib`.
+To get more help, issues or any suggestions for the `ngx-form-lib` mail to  `navdeep.dev2510@gmail.com` with subject `ngx-form-lib`.

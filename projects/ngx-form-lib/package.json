@@ -3,8 +3,14 @@
   "version": "0.1.1",
   "description": "Dynamic form library which help angular devs easily create angular reactive complex forms by providing json configuration.",
   "author": {
-    "email": "singh.navdeep2510@gmail.com",
-    "name": "Navdeep Singh"
+    "email": "navdeep.dev2510@gmail.com",
+    "name": "Navdeep Singh",
+    "url": "https://www.linkedin.com/in/navdeep-singh-4631a9127/"
+  },
+  "homepage": "https://ngx-form-lib.web.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nav2510/ngx-form-lib.git"
   },
   "keywords": [
     "angular",
