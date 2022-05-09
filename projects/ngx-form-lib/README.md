@@ -6,7 +6,7 @@ This project let you create different angular forms with all the features of ang
 
 ## Homepage
 
-Configure you form directly on [NgxFormLib](https://ngx-form-lib.web.app/) or play with forms on [Stackblitz](https://stackblitz.com/edit/angular-ivy-5hodcd)
+Configure your form directly on [NgxFormLib](https://ngx-form-lib.web.app/) or play with forms on [Stackblitz](https://stackblitz.com/edit/angular-ivy-5hodcd)
 
 
 ## Installation
@@ -78,6 +78,12 @@ export const CONFIG: FormConfig = {
 ## Style error fix
 
 If you find breaking style with material form just install `peer dependencies` manually and rerun the project.
+
+## Next major version release
+
+1. Field dependencies
+2. Form dependencies
+3. Facets (hidden, disable, set value)
 
 ## Further help
 
