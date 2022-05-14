@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -18,15 +18,22 @@ export class FormComponent implements OnInit, OnDestroy {
   @Output() formSubmit = new EventEmitter<void>();
 
   form: FormGroup = {} as FormGroup;
-  private readonly destroy$ = new Subject<void>()
+  private readonly destroy$ = new Subject<void>();
 
   constructor(private formService: FormsService) {}
 
   ngOnInit(): void {
-    this.form = this.formService.initForm(this.config.sections);
     this.form.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
       this.valueChanges.emit(this.form.value);
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['config'].currentValue) {
+      this.form = this.formService.initForm(
+        changes['config'].currentValue.sections
+      );
+    }
   }
 
   getFormControl(formGroupName: string, index: number): FormGroup {
