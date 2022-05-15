@@ -1,9 +1,32 @@
 <div *ngIf="config" class="ngf-wrapper ngf-button-wrapper">
-  <button 
-    [type]="config.subType" 
-    mat-raised-button 
-    [color]="parentConfig | setParentConfig: config : 'color'"
-  >
-    {{ config.label }}
-  </button>
+  <ng-container [ngSwitch]="config.attribute">
+    <button *ngSwitchCase="ButtonAttribute.MatButton" [type]="config.subType" mat-button
+      [color]="parentConfig | setParentConfig: config : 'color'">
+      {{ config.label }}
+    </button>
+    <button *ngSwitchCase="ButtonAttribute.MatRaisedButton" [type]="config.subType" mat-raised-button
+      [color]="parentConfig | setParentConfig: config : 'color'">
+      {{ config.label }}
+    </button>
+    <button *ngSwitchCase="ButtonAttribute.MatFlatButton" [type]="config.subType" mat-flat-button
+      [color]="parentConfig | setParentConfig: config : 'color'">
+      {{ config.label }}
+    </button>
+    <button *ngSwitchCase="ButtonAttribute.MatStrokedButton" [type]="config.subType" mat-stroked-button
+      [color]="parentConfig | setParentConfig: config : 'color'">
+      {{ config.label }}
+    </button>
+    <button *ngSwitchCase="ButtonAttribute.MatIconButton" [type]="config.subType" mat-icon-button
+      [color]="parentConfig | setParentConfig: config : 'color'">
+      <mat-icon>{{ config.label }}</mat-icon>
+    </button>
+    <button *ngSwitchCase="ButtonAttribute.MatFab" [type]="config.subType" mat-fab
+      [color]="parentConfig | setParentConfig: config : 'color'">
+      <mat-icon>{{ config.label }}</mat-icon>
+    </button>
+    <button *ngSwitchCase="ButtonAttribute.MatMiniFab" [type]="config.subType" mat-mini-fab
+      [color]="parentConfig | setParentConfig: config : 'color'">
+      <mat-icon>{{ config.label }}</mat-icon>
+    </button>
+  </ng-container>
 </div>

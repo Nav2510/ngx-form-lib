@@ -1,6 +1,7 @@
 export * from './button/button.module';
 export * from './button/button.component';
 export * from './button/button.model';
+export * from './button/button-attribute.model';
 
 export * from './checkbox/checkbox.module';
 export * from './checkbox/checkbox.component';

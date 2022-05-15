@@ -6,7 +6,7 @@
   >
     <mat-label [attr.for]="config.name">{{config.label}}</mat-label>
     <textarea matInput class="form-control" [formControlName]="config.name" [id]="config.name"
-      [placeholder]="config.placeholder" rows="5"></textarea>
+      [placeholder]="config.placeholder" [rows]="config.rows"></textarea>
     <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
     <span *ngIf="config.prefix" matPrefix>
       <ngf-prefix-suffix [config]="config.prefix"></ngf-prefix-suffix>
