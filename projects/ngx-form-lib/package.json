@@ -1,6 +1,6 @@
 {
   "name": "ngx-form-lib",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Dynamic form library which help angular devs easily create angular reactive complex forms by providing json configuration.",
   "author": {
     "email": "navdeep.dev2510@gmail.com",
