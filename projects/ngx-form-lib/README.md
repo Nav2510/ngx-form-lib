@@ -74,6 +74,7 @@ export const CONFIG: FormConfig = {
 3. Checkbox
 4. Radio
 5. Button
+6. Dropdown
 
 ## Style error fix
 

@@ -5,10 +5,13 @@
       [color]="parentConfig | setParentConfig: config : 'color'"
     >
     <mat-label *ngIf="config.label" [attr.for]="config.name">{{ config.label }}</mat-label>
-    <mat-select name="config.name" [formControlName]="config.name" [multiple]="false">
+    <mat-select [formControlName]="config.name" *ngIf="!config.multiple">
+      <mat-option *ngFor="let option of config.options" [value]="option.value">{{ option.label }}</mat-option>
+    </mat-select>
+    <mat-select [formControlName]="config.name" *ngIf="config.multiple" multiple>
       <!-- <mat-select-trigger>
-            TODO: Added select trigger for multiple and custom value
-          </mat-select-trigger> -->
+        TODO: Added select trigger for multiple and custom value
+      </mat-select-trigger> -->
       <mat-option *ngFor="let option of config.options" [value]="option.value">{{ option.label }}</mat-option>
     </mat-select>
     <span *ngIf="config.prefix" matPrefix>
