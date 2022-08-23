@@ -13,7 +13,16 @@ import { FormsService } from '../../services/forms.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class FormComponent implements OnInit, OnDestroy {
-  @Input() config: FormConfig = {} as FormConfig;
+  private _config: FormConfig = {} as FormConfig;
+
+  @Input() set config(configObj: FormConfig | object) {
+    this._config = configObj as FormConfig;
+  };
+
+  get config(): FormConfig {
+    return this._config;
+  }
+
   @Output() valueChanges = new EventEmitter<any>();
   @Output() formSubmit = new EventEmitter<void>();
 
