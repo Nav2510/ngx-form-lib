@@ -1,4 +1,4 @@
-import { Component, ComponentRef, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, Input, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { ButtonComponent } from '../../features/button/button.component';
@@ -7,12 +7,12 @@ import { DropdownComponent } from '../../features/dropdown/dropdown.component';
 import { InputComponent } from '../../features/input/input.component';
 import { RadioComponent } from '../../features/radio/radio.component';
 import { TextareaComponent } from '../../features/textarea/textarea.component';
+import { FieldTypeEnum } from '../../shared/enums/field-type.enum';
 import { FormField } from '../../shared/models/form-field.model';
 import { ParentConfig } from '../../shared/models/parent-config.model';
 import { BaseComponent } from '../components/base/base.component';
 
-// TODO: update to { [key in FieldTypeEnum]: any }
-const componentMapping: { [key: string]: any } = {
+const componentMapping: {[key in FieldTypeEnum]: Type<BaseComponent>} = {
   button: ButtonComponent,
   checkbox: CheckboxComponent,
   dropdown: DropdownComponent,
@@ -23,7 +23,7 @@ const componentMapping: { [key: string]: any } = {
 
 @Component({
   selector: 'ngf-container',
-  template: ` <ng-template #dynamicComponent></ng-template>`,
+  template: `<ng-template #dynamicComponent></ng-template>`,
 })
 export class ContainerComponent implements OnInit {
   @Input() config: FormField<string> = {} as FormField<string>;

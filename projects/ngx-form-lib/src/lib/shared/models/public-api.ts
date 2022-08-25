@@ -4,6 +4,7 @@ export * from './field-type.model';
 export * from './form-config.model';
 export * from './form-field.model';
 export * from './form-section.model';
+export * from './option.model';
 export * from './parent-config.model';
 export * from './prefix-suffix.model';
 export * from './validation-type.model';
