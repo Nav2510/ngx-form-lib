@@ -46,7 +46,6 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   getFormControl(formGroupName: string, index: number): FormGroup {
-    // TODO: Check if it can be optimized or not
     return this.form.get(`${formGroupName}.${index}`) as FormGroup;
   }
 

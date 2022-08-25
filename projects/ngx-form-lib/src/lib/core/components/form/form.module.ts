@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { FormComponent } from './form.component';
 import { ContainerModule } from '../../containers/container.module';
+import { SortByOrderModule } from '../../../shared/pipes/sort-by-order/sort-by-order.module';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { ContainerModule } from '../../containers/container.module';
     CommonModule,
     ContainerModule,
     ReactiveFormsModule,
+    SortByOrderModule
   ],
   exports: [FormComponent],
 })

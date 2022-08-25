@@ -1,4 +1,4 @@
-import { FieldTypeEnum } from '../../shared/models/field-type.model';
+import { FieldTypeEnum } from '../../shared/enums/field-type.enum';
 import { FormField } from '../../shared/models/form-field.model';
 import { PrefixSuffix } from '../../shared/models/prefix-suffix.model';
 

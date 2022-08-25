@@ -4,9 +4,7 @@
 1. Setup global styles in library with variables and imports
 
 ## Models
-1. Remove all types and change it to Enum.
-2. Add sort by order in mock
-3. Add facets for various meta properties, disable, hidden, populate.
+1. Add facets for various meta properties, disable, hidden, populate.
 
 ## Validators
 1. Add all validators with error messages
@@ -20,7 +18,7 @@
 5. Add select trigger for multiple and custom value
 6. Add appearance for form which can be override from fields appearance.
 7. Fix `dropdown` component
-8. Set `mat-button` dynamically
+8. Set `mat-button` dynamically `[Optional]`
 9. Check for all the `TODO` comments
 
 # Add Ons
