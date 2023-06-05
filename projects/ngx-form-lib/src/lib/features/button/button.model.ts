@@ -1,15 +1,15 @@
 import { FieldTypeEnum } from '../../shared/models/field-type.model';
-import { FormField } from '../../shared/models/form-field.model';
+import { Field } from '../../shared/models/field.model';
 import { FieldSubType } from '../input/field-sub-type.model';
 import { ButtonAttribute } from './button-attribute.model';
 
-export class Button extends FormField<string> {
+export class Button extends Field<string> {
   override type = FieldTypeEnum.Button;
   subType: FieldSubType;
   attribute: ButtonAttribute;
 
   constructor(params: {
-    field?: FormField<string>;
+    field?: Field<string>;
     subType?: FieldSubType;
     attribute: ButtonAttribute;
   }) {

@@ -3,7 +3,7 @@ import { Color, ColorEnum } from "./color.model";
 import { FieldType } from "./field-type.model";
 import { Validation } from "./validation.model";
 
-export class FormField<T> {
+export class Field<T> {
   appearance: Appearance | undefined;
   classes: string[];
   color: Color | undefined;

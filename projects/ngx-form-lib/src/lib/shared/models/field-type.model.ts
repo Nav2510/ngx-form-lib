@@ -9,7 +9,7 @@ export enum FieldTypeEnum {
   Radio = 'radio',
   Textarea = 'textarea',
 }
-// TODO: Implement hidden field as spacer
+
 export type FieldType =
   | 'button'
   | 'checkbox'

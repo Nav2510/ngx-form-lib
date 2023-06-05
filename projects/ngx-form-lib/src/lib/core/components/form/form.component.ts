@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 
 
-import { FormConfig } from '../../../shared/models/form-config.model';
+import { Config } from '../../../shared/models/config.model';
 import { FormsService } from '../../services/forms.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { FormsService } from '../../services/forms.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class FormComponent implements OnInit, OnDestroy {
-  @Input() config: FormConfig = {} as FormConfig;
+  @Input() config: Config = {} as Config;
   @Output() valueChanges = new EventEmitter<any>();
   @Output() formSubmit = new EventEmitter<void>();
 

@@ -1,15 +1,15 @@
 import { CheckboxLabelPosition } from "./checkbox-label-position.model";
 import { FieldTypeEnum } from "../../shared/models/field-type.model";
-import { FormField } from "../../shared/models/form-field.model";
+import { Field } from "../../shared/models/field.model";
 
-export class Checkbox extends FormField<string> {
+export class Checkbox extends Field<string> {
   override type = FieldTypeEnum.Checkbox;
   labelPosition: CheckboxLabelPosition;
   showInline: boolean;
   indeterminate: boolean;
 
   constructor(params: {
-    field?: FormField<string>;
+    field?: Field<string>;
     indeterminate?: boolean;
     labelPosition?: CheckboxLabelPosition;
     showInline?: boolean;

@@ -14,7 +14,7 @@ export class DropdownComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.config?.multiple) {
-      this.form?.get(this.config.name)?.setValue(this.config.value?.split(','))
+      this.group?.get(this.config.name)?.setValue(this.config.value?.split(','))
     }
   }
 }
