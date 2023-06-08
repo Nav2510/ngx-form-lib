@@ -3,13 +3,13 @@ import { FormArray, FormControl, FormGroup, ValidatorFn, Validators } from '@ang
 
 import { Validation } from '../../shared/models/validation.model';
 import { ValidationTypeEnum } from '../../shared/models/validation-type.model';
-import { FormSection } from '../../shared/models/form-section.model';
+import { Section } from '../../shared/models/section.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormsService {
-  initForm(sections: FormSection[]): FormGroup {
+  initForm(sections: Section[]): FormGroup {
     const list: FormGroup[] = [];
     sections.forEach((sectionItem) => {
       const group: { [key: string]: FormControl } = {};

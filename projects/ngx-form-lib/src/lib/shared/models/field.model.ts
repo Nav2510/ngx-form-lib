@@ -1,9 +1,9 @@
-import { Appearance, AppearanceEnum } from "./appearance.model";
-import { Color, ColorEnum } from "./color.model";
-import { FieldType } from "./field-type.model";
+import { FieldTypeEnum } from "../enums/field-type.enum";
+import { Appearance } from "./appearance.model";
+import { Color } from "./color.model";
 import { Validation } from "./validation.model";
 
-export class FormField<T> {
+export class Field<T> {
   appearance: Appearance | undefined;
   classes: string[];
   color: Color | undefined;
@@ -13,7 +13,7 @@ export class FormField<T> {
   name: string;
   order: number;
   placeholder: string;
-  type: FieldType;
+  type: FieldTypeEnum;
   value: T | undefined;
   validators: Validation[];
 
@@ -28,7 +28,7 @@ export class FormField<T> {
       name?: string;
       order?: number;
       placeholder?: string;
-      type?: FieldType;
+      type?: FieldTypeEnum;
       value?: T;
       validators?: Validation[];
     } = {}
@@ -42,7 +42,7 @@ export class FormField<T> {
     this.name = params.name || '';
     this.order = params.order === undefined ? 1 : params.order;
     this.placeholder = params.placeholder || '';
-    this.type = params.type || 'input';
+    this.type = params.type || FieldTypeEnum.Input;
     this.value = params.value;
     this.validators = params.validators || [];
   }

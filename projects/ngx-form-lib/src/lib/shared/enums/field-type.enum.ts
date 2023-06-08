@@ -6,3 +6,8 @@ export enum FieldTypeEnum {
   Radio = 'radio',
   Textarea = 'textarea',
 }
+
+// TODO Added
+// File = 'file',
+// Hidden = 'hidden',
+// Image = 'image',

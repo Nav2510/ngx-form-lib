@@ -1,16 +1,16 @@
 import { FieldTypeEnum } from '../../shared/enums/field-type.enum';
-import { FormField } from '../../shared/models/form-field.model';
+import { Field } from '../../shared/models/field.model';
 import { Option } from '../../shared/models/option.model';
 import { PrefixSuffix } from '../../shared/models/prefix-suffix.model';
 
-export class Dropdown extends FormField<string> {
+export class Dropdown extends Field<string> {
   override type = FieldTypeEnum.Dropdown;
   options: Option[];
   prefix: PrefixSuffix | undefined;
   suffix: PrefixSuffix | undefined;
   multiple: boolean;
   constructor(params: {
-    field?: FormField<string>;
+    field?: Field<string>;
     options?: Option[];
     prefix?: PrefixSuffix | undefined;
     suffix?: PrefixSuffix | undefined;

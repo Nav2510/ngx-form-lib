@@ -33,9 +33,9 @@ export class HomeModule {}
 ```
 6. Create a constant file with form configuration. You can directly create form configuration on [NgxFormLib webpage](https://ngx-form-lib.web.app/) and use it in your projects. IDE support will provide with autofill for various properties.
 ```javascript
-import { ParentConfig, Input, FormField, FormConfig } from "ngx-form-lib";
+import { ParentConfig, Input, Field, Config } from "ngx-form-lib";
 
-export const CONFIG: FormConfig = {
+export const CONFIG: Config = {
     header: 'Form Header',
     parentConfig: new ParentConfig({
       appearance: 'fill',
@@ -47,7 +47,7 @@ export const CONFIG: FormConfig = {
         fields: [
           new Input({
             subType: 'text',
-            field: new FormField({
+            field: new Field({
               type: 'input',
               name: 'money',
               label: 'Enter your name',

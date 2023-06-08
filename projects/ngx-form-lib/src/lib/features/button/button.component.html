@@ -1,32 +1,24 @@
 <div *ngIf="config" class="ngf-wrapper ngf-button-wrapper">
-  <ng-container [ngSwitch]="config.attribute">
-    <button *ngSwitchCase="ButtonAttribute.MatButton" [type]="config.subType" mat-button
-      [color]="parentConfig | setParentConfig: config : 'color'">
-      {{ config.label }}
-    </button>
-    <button *ngSwitchCase="ButtonAttribute.MatRaisedButton" [type]="config.subType" mat-raised-button
-      [color]="parentConfig | setParentConfig: config : 'color'">
-      {{ config.label }}
-    </button>
-    <button *ngSwitchCase="ButtonAttribute.MatFlatButton" [type]="config.subType" mat-flat-button
-      [color]="parentConfig | setParentConfig: config : 'color'">
-      {{ config.label }}
-    </button>
-    <button *ngSwitchCase="ButtonAttribute.MatStrokedButton" [type]="config.subType" mat-stroked-button
-      [color]="parentConfig | setParentConfig: config : 'color'">
-      {{ config.label }}
-    </button>
-    <button *ngSwitchCase="ButtonAttribute.MatIconButton" [type]="config.subType" mat-icon-button
-      [color]="parentConfig | setParentConfig: config : 'color'">
-      <mat-icon>{{ config.label }}</mat-icon>
-    </button>
-    <button *ngSwitchCase="ButtonAttribute.MatFab" [type]="config.subType" mat-fab
-      [color]="parentConfig | setParentConfig: config : 'color'">
-      <mat-icon>{{ config.label }}</mat-icon>
-    </button>
-    <button *ngSwitchCase="ButtonAttribute.MatMiniFab" [type]="config.subType" mat-mini-fab
-      [color]="parentConfig | setParentConfig: config : 'color'">
-      <mat-icon>{{ config.label }}</mat-icon>
-    </button>
-  </ng-container>
+  <button mat-button [ngClass]="{
+    'mat-flat-button': config.attribute === ButtonAttribute.MatFlatButton,
+    'mat-raised-button': config.attribute === ButtonAttribute.MatRaisedButton,
+    'mat-stroked-button': config.attribute === ButtonAttribute.MatStrokedButton,
+    'mat-icon-button': config.attribute === ButtonAttribute.MatIconButton,
+    'mat-fab': config.attribute === ButtonAttribute.MatFab,
+    'mat-mini-fab': config.attribute === ButtonAttribute.MatMiniFab
+  }" [type]="config.subType" [color]="parentConfig | setParentConfig: config : 'color'">
+    <ng-container
+      [ngTemplateOutlet]="
+      config.attribute === ButtonAttribute.MatIconButton ||
+      config.attribute === ButtonAttribute.MatFab ||
+      config.attribute === ButtonAttribute.MatMiniFab ? iconTemplate: labelTemplate"
+      [ngTemplateOutletContext]="{label:config.label}"
+    ></ng-container>
+  </button>
 </div>
+<ng-template #labelTemplate let-label="label">{{ label }}</ng-template>
+<ng-template #iconTemplate let-label="label">
+  <mat-icon>
+    {{ label }}
+  </mat-icon>
+</ng-template>

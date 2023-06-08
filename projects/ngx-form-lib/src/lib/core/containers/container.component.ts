@@ -8,9 +8,9 @@ import { InputComponent } from '../../features/input/input.component';
 import { RadioComponent } from '../../features/radio/radio.component';
 import { TextareaComponent } from '../../features/textarea/textarea.component';
 import { FieldTypeEnum } from '../../shared/enums/field-type.enum';
-import { FormField } from '../../shared/models/form-field.model';
 import { ParentConfig } from '../../shared/models/parent-config.model';
 import { BaseComponent } from '../components/base/base.component';
+import { Field } from '../../shared/models/field.model';
 
 const componentMapping: {[key in FieldTypeEnum]: Type<BaseComponent>} = {
   button: ButtonComponent,
@@ -26,8 +26,8 @@ const componentMapping: {[key in FieldTypeEnum]: Type<BaseComponent>} = {
   template: `<ng-template #dynamicComponent></ng-template>`,
 })
 export class ContainerComponent implements OnInit {
-  @Input() config: FormField<string> = {} as FormField<string>;
-  @Input() form: FormGroup | null = null;
+  @Input() config: Field<any> = {} as Field<any>;
+  @Input() group: FormGroup | null = null;
   @Input() parentConfig: ParentConfig | null = null;
   @ViewChild('dynamicComponent', { static: true, read: ViewContainerRef }) dynamicComponent!: ViewContainerRef;
 
@@ -37,10 +37,10 @@ export class ContainerComponent implements OnInit {
 
   private loadDynamicFields(): void {
     if (this.dynamicComponent && this.config?.type) {
-      const componentRef = this.dynamicComponent.createComponent(componentMapping[this.config.type]) as ComponentRef<BaseComponent>;
+      const componentRef = this.dynamicComponent.createComponent(componentMapping[this.config.type]);
 
       componentRef.instance.config = this.config;
-      componentRef.instance.form = this.form;
+      componentRef.instance.group = this.group;
       componentRef.instance.parentConfig = this.parentConfig;
     }
   }

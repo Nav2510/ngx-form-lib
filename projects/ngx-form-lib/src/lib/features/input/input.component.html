@@ -1,4 +1,4 @@
-<div *ngIf="form && config" [formGroup]="form" class="ngf-wrapper ngf-input-wrapper">
+<div *ngIf="group && config" [formGroup]="group" class="ngf-wrapper ngf-input-wrapper">
   <mat-form-field class="ngf-form-field" 
     [color]="parentConfig | setParentConfig: config : 'color'"
     [appearance]="parentConfig | setParentConfig: config : 'appearance'"
@@ -13,13 +13,13 @@
     </span>
     <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
     <mat-error class="ngf-field-error" *ngFor="let validationItem of config.validators">
-      <ng-container *ngIf="form.controls[config.name].hasError(validationItem.type) &&
-            (form.controls[config.name].dirty || form.controls[config.name].touched)">
+      <ng-container *ngIf="group.controls[config.name].hasError(validationItem.type) &&
+            (group.controls[config.name].dirty || group.controls[config.name].touched)">
         <span>{{ validationItem.message }}</span>
         <span
-          *ngIf="validationItem.showDynamicError && this.form.controls[config.name].getError(validationItem.type)?.actualLength as actualLength">
+          *ngIf="validationItem.showDynamicError && this.group.controls[config.name].getError(validationItem.type)?.actualLength as actualLength">
           {{actualLength}}/
-          {{this.form.controls[config.name].getError(validationItem.type)?.requiredLength}}
+          {{this.group.controls[config.name].getError(validationItem.type)?.requiredLength}}
         </span>
       </ng-container>
     </mat-error>
