@@ -7,11 +7,12 @@ import { DropdownComponent } from '../../features/dropdown/dropdown.component';
 import { InputComponent } from '../../features/input/input.component';
 import { RadioComponent } from '../../features/radio/radio.component';
 import { TextareaComponent } from '../../features/textarea/textarea.component';
-import { Field } from '../../shared/models/field.model';
+import { FieldTypeEnum } from '../../shared/enums/field-type.enum';
 import { ParentConfig } from '../../shared/models/parent-config.model';
 import { BaseComponent } from '../components/base/base.component';
+import { Field } from '../../shared/models/field.model';
 
-const componentMapping: { [key: string]: Type<BaseComponent> } = {
+const componentMapping: {[key in FieldTypeEnum]: Type<BaseComponent>} = {
   button: ButtonComponent,
   checkbox: CheckboxComponent,
   dropdown: DropdownComponent,
@@ -22,10 +23,10 @@ const componentMapping: { [key: string]: Type<BaseComponent> } = {
 
 @Component({
   selector: 'ngf-container',
-  template: ` <ng-template #dynamicComponent></ng-template>`,
+  template: `<ng-template #dynamicComponent></ng-template>`,
 })
 export class ContainerComponent implements OnInit {
-  @Input() config: Field<string> = {} as Field<string>;
+  @Input() config: Field<any> = {} as Field<any>;
   @Input() group: FormGroup | null = null;
   @Input() parentConfig: ParentConfig | null = null;
   @ViewChild('dynamicComponent', { static: true, read: ViewContainerRef }) dynamicComponent!: ViewContainerRef;

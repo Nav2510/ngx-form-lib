@@ -1,4 +1,4 @@
-import { FieldTypeEnum } from '../../shared/models/field-type.model';
+import { FieldTypeEnum } from '../../shared/enums/field-type.enum';
 import { Field } from '../../shared/models/field.model';
 import { FieldSubType } from '../input/field-sub-type.model';
 import { ButtonAttribute } from './button-attribute.model';

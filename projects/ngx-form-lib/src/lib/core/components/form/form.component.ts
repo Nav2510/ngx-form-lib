@@ -13,7 +13,16 @@ import { FormsService } from '../../services/forms.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class FormComponent implements OnInit, OnDestroy {
-  @Input() config: Config = {} as Config;
+  private _config: Config = {} as Config;
+
+  @Input() set config(configObj: Config | object) {
+    this._config = configObj as Config;
+  };
+
+  get config(): Config {
+    return this._config;
+  }
+
   @Output() valueChanges = new EventEmitter<any>();
   @Output() formSubmit = new EventEmitter<void>();
 
@@ -37,7 +46,6 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   getFormControl(formGroupName: string, index: number): FormGroup {
-    // TODO: Check if it can be optimized or not
     return this.form.get(`${formGroupName}.${index}`) as FormGroup;
   }
 

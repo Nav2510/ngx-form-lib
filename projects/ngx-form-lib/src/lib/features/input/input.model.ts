@@ -1,7 +1,7 @@
 import { FieldSubType } from './field-sub-type.model';
-import { FieldTypeEnum } from '../../shared/models/field-type.model';
-import { Field } from '../../shared/models/field.model';
 import { PrefixSuffix } from '../../shared/models/prefix-suffix.model';
+import { FieldTypeEnum } from '../../shared/enums/field-type.enum';
+import { Field } from '../../shared/models/field.model';
 
 export class Input extends Field<string> {
   override type = FieldTypeEnum.Input;

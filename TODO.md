@@ -13,7 +13,7 @@
 2. Add dependency property to `Validation`, i.e. on providing dependency validation will be enabled with the required value of depedent field.
 
 ## Components
-1. Create dynamic components instead of currently hardcoded in `form component`.
+1. Create dynamic components instead of currently hardcoded in `form component`.✔ [Fixed bugs and todo](https://github.com/Nav2510/ngx-form-lib/pull/7/commits/4311ab8007f6f043e79d6f4b09ed7ab92ff3a9aa)
 2. Create `@shared/enum/test` path format.
 3. Add fill options, hint in properties.
 4. Add aria-label supports in library.
@@ -25,7 +25,7 @@
 10. Implement hidden field type as spacer for form
 
 # Add Ons
-1. Implenting nested forms.
+1. Nested forms.
 2. Create symantics for npm package.
 3. Onboarding Helper on form-lib.
 

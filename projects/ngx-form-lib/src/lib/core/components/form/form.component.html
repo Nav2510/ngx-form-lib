@@ -9,7 +9,7 @@
       > 
       <h4 class="ngf-h4" *ngIf="sectionItem.sectionHeader">{{ sectionItem.sectionHeader }}</h4>
       <div class="ngf-section">
-        <div *ngFor="let configItem of sectionItem.fields" class="ngf-field-container" [ngClass]="configItem.classes">
+        <div *ngFor="let configItem of sectionItem.fields  | sortByOrder" class="ngf-field-container" [ngClass]="configItem.classes">
           <ngf-container [parentConfig]="config.parentConfig" [config]="configItem" [group]="getFormControl('sections', i)">
           </ngf-container>
         </div>

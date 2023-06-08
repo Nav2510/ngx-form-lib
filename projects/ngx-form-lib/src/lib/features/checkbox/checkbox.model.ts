@@ -1,6 +1,6 @@
 import { CheckboxLabelPosition } from "./checkbox-label-position.model";
-import { FieldTypeEnum } from "../../shared/models/field-type.model";
 import { Field } from "../../shared/models/field.model";
+import { FieldTypeEnum } from "../../shared/enums/field-type.enum";
 
 export class Checkbox extends Field<string> {
   override type = FieldTypeEnum.Checkbox;

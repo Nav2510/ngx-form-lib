@@ -1,14 +1,15 @@
-import { FieldTypeEnum } from "../../shared/models/field-type.model";
+import { FieldTypeEnum } from "../../shared/enums/field-type.enum";
 import { Field } from "../../shared/models/field.model";
+import { Option } from "../../shared/models/option.model";
 
 export class Radio extends Field<string> {
   override type = FieldTypeEnum.Radio;
   showInline: boolean;
-  options: { label: string; value: string }[];
+  options: Option[];
 
   constructor(params: {
     field?: Field<string>;
-    options?: { label: string; value: string }[];
+    options?: Option[];
     showInline?: boolean;
   }) {
     super(params.field);
