@@ -12,10 +12,8 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
-      "ngx-form-lib": [
-        "dist/ngx-form-lib/ngx-form-lib",
-        "dist/ngx-form-lib"
-      ]
+      "ngx-form-lib": ["projects/ngx-form-lib/src/lib"],
+      "ngx-form-lib/*": ["projects/ngx-form-lib/src/lib/*"]
     },
     "declaration": false,
     "downlevelIteration": true,
@@ -24,10 +22,7 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    "lib": ["es2020", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

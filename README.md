@@ -1,91 +1,27 @@
-![alt text](https://github.com/Nav2510/form-lib-workspace/blob/develop/src/assets/icons/logo-lg.svg?raw=true)
+# NgxFormLib2
 
-**Build dynamic form in Angular, easy and fast.**
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
 
-This project let you create different angular forms with all the features of angular reactive by providing basic class configuration. It user angular materials under the hook taking advantage of material themes.
+## Development server
 
-## Homepage
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-Configure your form directly on [NgxFormLib](https://ngx-form-lib.web.app/) or play with forms on [Stackblitz](https://stackblitz.com/edit/angular-ivy-5hodcd)
+## Code scaffolding
 
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Installation
+## Build
 
-1. In your angular project run command `npm install --save ngx-form-lib` and install the package.
-2. This library use [Angular material](https://material.angular.io/) for themes. So, if you have already setup `Angular material` skip step 3.
-3. You also need to install `peer dependencies`. [Installing npm peer dependencies](https://www.npmjs.com/package/npm-install-peers).
-4. Setup angular material in your project. [Getting started guide](https://material.angular.io/guide/getting-started).
-5. Import `FormLibModule` from `ngx-form-lib` and add it into the imports array of your module.
-```javascript
-import { NgModule } from '@angular/core';
-import { FormLibModule } from 'ngx-form-lib';
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-import { CommonModule } from '@angular/common';
+## Running unit tests
 
-@NgModule({
-  declarations: [HomeComponent],
-  imports: [
-    CommonModule,
-    FormLibModule,
-  ],
-})
-export class HomeModule {}
-```
-6. Create a constant file with form configuration. You can directly create form configuration on [NgxFormLib webpage](https://ngx-form-lib.web.app/) and use it in your projects. IDE support will provide with autofill for various properties.
-```javascript
-import { ParentConfig, Input, FormField, FormConfig } from "ngx-form-lib";
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-export const CONFIG: FormConfig = {
-    header: 'Form Header',
-    parentConfig: new ParentConfig({
-      appearance: 'fill',
-      color: 'primary',
-    }),
-    sections: [
-      {
-        sectionHeader: 'Section Header',
-        fields: [
-          new Input({
-            subType: 'text',
-            field: new FormField({
-              type: 'input',
-              name: 'money',
-              label: 'Enter your name',
-              order: 1,
-              classes: ['ngf-col-12'],
-            }),
-          }),
-        ],
-      },
-    ],
-  };
-  ```
+## Running end-to-end tests
 
-
-7. Bind the configuration with `config` property of `ngx-for-lib` component.
-```html
-<ngx-form-lib [config]="CONFIG"></ngx-form-lib>
-```
-
-## List of supported component
-
-1. Input
-2. Textarea
-3. Checkbox
-4. Radio
-5. Button
-6. Dropdown
-
-## Style error fix
-
-If you find breaking style with material form just install `peer dependencies` manually and rerun the project.
-
-## Next major version release
-
-1. Field dependencies
-2. Form dependencies
-3. Facets (hidden, disable, set value)
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Further help
 
-To get more help, issues or any suggestions for the `ngx-form-lib` mail to  `navdeep.dev2510@gmail.com` with subject `ngx-form-lib`.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

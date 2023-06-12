@@ -12,10 +12,24 @@ Configure your form directly on [NgxFormLib](https://ngx-form-lib.web.app/) or p
 ## Installation
 
 1. In your angular project run command `npm install --save ngx-form-lib` and install the package.
-2. This library use [Angular material](https://material.angular.io/) for themes. So, if you have already setup `Angular material` skip step 3.
+2. This library use [Angular material](https://material.angular.io/) for themes. So, if you have already setup `Angular material` skip step 4.
 3. You also need to install `peer dependencies`. [Installing npm peer dependencies](https://www.npmjs.com/package/npm-install-peers).
 4. Setup angular material in your project. [Getting started guide](https://material.angular.io/guide/getting-started).
-5. Import `FormLibModule` from `ngx-form-lib` and add it into the imports array of your module.
+5. Import `BrowserAnimationModule` in `app.module.ts`.
+```javascript
+// ... Other imports
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  imports: [
+    ...,
+    BrowserAnimationsModule
+  ],
+  ...,
+})
+export class AppModule { }
+```
+6. Import `FormLibModule` from `ngx-form-lib` and add it into the imports array of your module.
 ```javascript
 import { NgModule } from '@angular/core';
 import { FormLibModule } from 'ngx-form-lib';
@@ -31,7 +45,8 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeModule {}
 ```
-6. Create a constant file with form configuration. You can directly create form configuration on [NgxFormLib webpage](https://ngx-form-lib.web.app/) and use it in your projects. IDE support will provide with autofill for various properties.
+
+7. Create a constant file with form configuration. You can directly create form configuration on [NgxFormLib webpage](https://ngx-form-lib.web.app/) and use it in your projects. IDE support will provide with autofill for various properties.
 ```javascript
 import { ParentConfig, Input, Field, Config } from "ngx-form-lib";
 
@@ -62,7 +77,7 @@ export const CONFIG: Config = {
   ```
 
 
-7. Bind the configuration with `config` property of `ngx-for-lib` component.
+8. Bind the configuration with `config` property of `ngx-for-lib` component.
 ```html
 <ngx-form-lib [config]="CONFIG"></ngx-form-lib>
 ```
