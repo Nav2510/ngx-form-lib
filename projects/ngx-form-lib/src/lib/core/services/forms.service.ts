@@ -15,7 +15,7 @@ export class FormsService {
       const group: { [key: string]: FormControl } = {};
       sectionItem.fields.forEach((config) => {
         group[config.name] = new FormControl(
-          config.value,
+          { value: config.value, disabled: config.facet?.disabled },
           config.validators ? this.createValidations(config.validators) : null
         );
       });

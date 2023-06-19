@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DynamicService } from './dynamic.service';
+import { DependentService } from './dependent.service';
 
-describe('DynamicService', () => {
-  let service: DynamicService;
+describe('DependentService', () => {
+  let service: DependentService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DynamicService);
+    service = TestBed.inject(DependentService);
   });
 
   it('should be created', () => {

@@ -17,7 +17,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
   @Input() set config(configObj: Config | object) {
     this._config = configObj as Config;
-  };
+  }
 
   get config(): Config {
     return this._config;
@@ -29,7 +29,7 @@ export class FormComponent implements OnInit, OnDestroy {
   form: FormGroup = {} as FormGroup;
   private readonly destroy$ = new Subject<void>();
 
-  constructor(private formService: FormsService) {}
+  constructor(private readonly formService: FormsService) {}
 
   ngOnInit(): void {
     this.form.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
