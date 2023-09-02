@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -26,10 +26,10 @@ export class BaseComponent implements OnInit {
 
   setupDependentControls(): void {
     this.group?.get(this.config?.name || '')?.valueChanges.subscribe(controlValue => {
-      if (this.config?.facet.dependents && this.group) {
+      if (this.config?.facets.dependents && this.group) {
         this.dependentService.setDependentFields(
           this.group,
-          this.config.facet.dependents,
+          this.config.facets.dependents,
           controlValue
         );
       }

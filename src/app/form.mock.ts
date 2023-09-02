@@ -24,11 +24,11 @@ export const MASTER_CONFIG: Config = {
         }),
         new Dropdown({
           field: new Field({
+            name: 'dependencyDropdown',
             classes: ['ngf-col-12'],
             hint: '',
             label: 'Select below form type to check field dependency',
-            name: 'form',
-            facet: {
+            facets: {
               dependents: [
                 {
                   fieldPath: 'awesomeLibrary',
@@ -79,13 +79,13 @@ export const MASTER_CONFIG: Config = {
         new Input({
           subType: 'text',
           field: new Field({
+            name: 'awesomeLibrary',
             label: "Select dropdown field to alter it's property",
             order: 35,
             value: '',
             color: 'primary',
-            name: 'awesomeLibrary',
             classes: ['ngf-col-12'],
-            facet: {
+            facets: {
               disabled: true,
             },
           }),
@@ -94,10 +94,10 @@ export const MASTER_CONFIG: Config = {
           attribute: 'mat-flat-button',
           subType: 'submit',
           field: new Field({
+            name: 'viewInConsole',
             label: 'View in console',
             order: 40,
             color: 'primary',
-            name: 'submit',
             classes: ['ngf-col-6'],
           }),
         }),

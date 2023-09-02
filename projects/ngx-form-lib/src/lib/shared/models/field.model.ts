@@ -1,14 +1,14 @@
 import { FieldTypeEnum } from "../enums/field-type.enum";
 import { Appearance } from "./appearance.model";
 import { Color } from "./color.model";
-import { Facet } from "./facet.model";
+import { Facets } from "./facets.model";
 import { Validation } from "./validation.model";
 
 export class Field<T> {
   appearance: Appearance | undefined;
   classes: string[];
   color: Color | undefined;
-  facet: Facet;
+  facets: Facets;
   hint: string;
   label: string;
   method: (param?: any) => any;
@@ -24,7 +24,7 @@ export class Field<T> {
       appearance?: Appearance;
       classes?: string[];
       color?: Color;
-      facet?: Facet;
+      facets?: Facets;
       hint?: string;
       label?: string;
       method?: (param?: any) => any;
@@ -39,7 +39,7 @@ export class Field<T> {
     this.appearance = params.appearance;
     this.classes = params.classes || [];
     this.color = params.color;
-    this.facet = params.facet || { disabled: false, hidden: false };
+    this.facets = params.facets || { disabled: false, hidden: false };
     this.hint = params.hint || '';
     this.label = params.label || '';
     this.method = params.method === undefined ? () => {} : params.method;

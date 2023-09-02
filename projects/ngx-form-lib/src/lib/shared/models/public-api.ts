@@ -2,7 +2,7 @@ export * from './appearance.model';
 export * from './color.model';
 export * from './config.model';
 export * from './dependent.model';
-export * from './facet.model';
+export * from './facets.model';
 export * from './field.model';
 export * from './option.model';
 export * from './parent-config.model';
