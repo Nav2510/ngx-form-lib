@@ -2,7 +2,7 @@
 
 **Build dynamic form in Angular, easy and fast.**
 
-This project let you create different angular forms with all the features of angular reactive by providing basic class configuration. It user angular materials under the hook taking advantage of material themes.
+This package simplifies Angular form creation with full Angular reactive capabilities by offering a straightforward class configuration. It leverages Angular Material, utilizing material themes for enhanced functionality.
 
 ## Homepage
 
@@ -95,7 +95,7 @@ export const CONFIG: Config = {
 
 If you find breaking style with material form just install `peer dependencies` manually and rerun the project.
 
-## Next major version release
+## Next release version features
 
 1. Field dependencies
 2. Form dependencies
