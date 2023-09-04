@@ -1,11 +1,20 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Observable, Subject, takeUntil, tap } from 'rxjs';
-
+import { Observable, Subject, takeUntil } from 'rxjs';
 
 import { Config } from '../../../shared/models/config.model';
 import { FormsService } from '../../services/forms.service';
-import { DependenciesService } from 'ngx-form-lib/core/services/dependencies.service';
+import { DependenciesService } from '../../../core/services/dependencies.service';
+import { AutoUnsubscribe } from '../../../shared/decorators/auto-unsubscribe.decorator';
 
 @Component({
   selector: 'ngx-form-lib',
@@ -13,7 +22,8 @@ import { DependenciesService } from 'ngx-form-lib/core/services/dependencies.ser
   styleUrls: ['./form.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class FormComponent implements OnInit, OnDestroy {
+@AutoUnsubscribe()
+export class FormComponent implements OnInit {
   private _config: Config = {} as Config;
 
   @Input() set config(configObj: Config | object) {
@@ -34,14 +44,14 @@ export class FormComponent implements OnInit, OnDestroy {
   constructor(
     private readonly formService: FormsService,
     private readonly dependenciesService: DependenciesService,
-    private readonly cdr: ChangeDetectorRef,
+    private readonly cdr: ChangeDetectorRef
   ) {
     this.hiddenFields$ = this.dependenciesService.getHiddenFields();
   }
 
   ngAfterContentChecked() {
     this.cdr.detectChanges();
- }
+  }
 
   ngOnInit(): void {
     this.form.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
@@ -63,10 +73,5 @@ export class FormComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     this.formSubmit.emit();
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next(undefined);
-    this.destroy$.complete();
   }
 }

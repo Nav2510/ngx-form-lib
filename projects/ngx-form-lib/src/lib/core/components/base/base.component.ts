@@ -6,7 +6,7 @@ import { Field } from '../../../shared/models/field.model';
 import { ParentConfig } from '../../../shared/models/parent-config.model';
 import { DependenciesService } from '../../services/dependencies.service';
 import { AutoUnsubscribe } from '../../../shared/decorators/auto-unsubscribe.decorator';
-import { Dependency } from 'ngx-form-lib/shared';
+import { Dependency } from '../../../shared/models/dependency.model';
 
 @Component({
   template: '',

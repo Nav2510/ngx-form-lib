@@ -9,7 +9,7 @@ Facets for disable, hidden, fill, in form dependecies.
 ## Models
 1. Remove all types and change it to Enum.
 2. Add sort by order in mock. ✔ [Fixed bugs and todo](https://github.com/Nav2510/ngx-form-lib/pull/7/commits/4311ab8007f6f043e79d6f4b09ed7ab92ff3a9aa)
-3. Add facets for various meta properties, disable, hidden, populate, eventTrigger.
+3. Add facets for various meta properties, disable, hidden, populate, eventTrigger. ✔ [Changed to dependency](https://github.com/Nav2510/ngx-form-lib/commit/dff68ef223c8b48f256cee35d7424d356e817cdc)
 
 ## Validators
 1. Add all validators with error messages
