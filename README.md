@@ -12,10 +12,24 @@ Configure your form directly on [NgxFormLib](https://ngx-form-lib.web.app/) or p
 ## Installation
 
 1. In your angular project run command `npm install --save ngx-form-lib` and install the package.
-2. This library use [Angular material](https://material.angular.io/) for themes. So, if you have already setup `Angular material` skip step 3.
+2. This library use [Angular material](https://material.angular.io/) for themes. So, if you have already setup `Angular material` skip step 4.
 3. You also need to install `peer dependencies`. [Installing npm peer dependencies](https://www.npmjs.com/package/npm-install-peers).
 4. Setup angular material in your project. [Getting started guide](https://material.angular.io/guide/getting-started).
-5. Import `FormLibModule` from `ngx-form-lib` and add it into the imports array of your module.
+5. Import `BrowserAnimationModule` in `app.module.ts`.
+```javascript
+// ... Other imports
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  imports: [
+    ...,
+    BrowserAnimationsModule
+  ],
+  ...,
+})
+export class AppModule { }
+```
+6. Import `FormLibModule` from `ngx-form-lib` and add it into the imports array of your module.
 ```javascript
 import { NgModule } from '@angular/core';
 import { FormLibModule } from 'ngx-form-lib';
@@ -31,11 +45,12 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeModule {}
 ```
-6. Create a constant file with form configuration. You can directly create form configuration on [NgxFormLib webpage](https://ngx-form-lib.web.app/) and use it in your projects. IDE support will provide with autofill for various properties.
-```javascript
-import { ParentConfig, Input, FormField, FormConfig } from "ngx-form-lib";
 
-export const CONFIG: FormConfig = {
+7. Create a constant file with form configuration. You can directly create form configuration on [NgxFormLib webpage](https://ngx-form-lib.web.app/) and use it in your projects. IDE support will provide with autofill for various properties.
+```javascript
+import { ParentConfig, Input, Field, Config } from "ngx-form-lib";
+
+export const CONFIG: Config = {
     header: 'Form Header',
     parentConfig: new ParentConfig({
       appearance: 'fill',
@@ -47,7 +62,7 @@ export const CONFIG: FormConfig = {
         fields: [
           new Input({
             subType: 'text',
-            field: new FormField({
+            field: new Field({
               type: 'input',
               name: 'money',
               label: 'Enter your name',
@@ -62,12 +77,16 @@ export const CONFIG: FormConfig = {
   ```
 
 
-7. Bind the configuration with `config` property of `ngx-for-lib` component.
+8. Bind the configuration with `config` property of `ngx-for-lib` component.
 ```html
 <ngx-form-lib [config]="CONFIG"></ngx-form-lib>
 ```
 
-## List of supported component
+### Style error fix
+
+If you find breaking style with material form just install `peer dependencies` manually and rerun the project.
+
+### List of supported component
 
 1. Input
 2. Textarea
@@ -76,16 +95,18 @@ export const CONFIG: FormConfig = {
 5. Button
 6. Dropdown
 
-## Style error fix
 
-If you find breaking style with material form just install `peer dependencies` manually and rerun the project.
+# Features and releases
+### Current features
 
-## Next release version features
+1. Dynamic components
+2. Field Dependencies
+3. Facets implementations (hidden, disable, set value)
 
-1. Field dependencies
-2. Form dependencies
-3. Facets (hidden, disable, set value)
+### Next release version features
 
-## Further help
+1. Form dependencies
+
+# Further help
 
 To get more help, issues or any suggestions for the `ngx-form-lib` mail to  `navdeep.dev2510@gmail.com` with subject `ngx-form-lib`.
