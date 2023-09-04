@@ -12,9 +12,12 @@ export class DropdownComponent extends BaseComponent implements OnInit {
   override config: Dropdown | null = null;
 
 
-  ngOnInit(): void {
+  /** Splitting ',' separated value to an array of values and setting to multiple control
+   *  */
+  override ngOnInit(): void {
+    super.ngOnInit();
     if (this.config?.multiple) {
-      this.group?.get(this.config.name)?.setValue(this.config.value?.split(','))
+      this.group?.get(this.config.name)?.setValue(this.config.value?.split(','));
     }
   }
 }

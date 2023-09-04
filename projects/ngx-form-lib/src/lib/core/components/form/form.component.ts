@@ -1,10 +1,20 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Subject, takeUntil } from 'rxjs';
-
+import { Observable, Subject, takeUntil } from 'rxjs';
 
 import { Config } from '../../../shared/models/config.model';
 import { FormsService } from '../../services/forms.service';
+import { DependenciesService } from '../../../core/services/dependencies.service';
+import { AutoUnsubscribe } from '../../../shared/decorators/auto-unsubscribe.decorator';
 
 @Component({
   selector: 'ngx-form-lib',
@@ -12,12 +22,13 @@ import { FormsService } from '../../services/forms.service';
   styleUrls: ['./form.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class FormComponent implements OnInit, OnDestroy {
+@AutoUnsubscribe()
+export class FormComponent implements OnInit {
   private _config: Config = {} as Config;
 
   @Input() set config(configObj: Config | object) {
     this._config = configObj as Config;
-  };
+  }
 
   get config(): Config {
     return this._config;
@@ -27,9 +38,20 @@ export class FormComponent implements OnInit, OnDestroy {
   @Output() formSubmit = new EventEmitter<void>();
 
   form: FormGroup = {} as FormGroup;
+  hiddenFields$: Observable<any> = this.dependenciesService.getHiddenFields();
   private readonly destroy$ = new Subject<void>();
 
-  constructor(private formService: FormsService) {}
+  constructor(
+    private readonly formService: FormsService,
+    private readonly dependenciesService: DependenciesService,
+    private readonly cdr: ChangeDetectorRef
+  ) {
+    this.hiddenFields$ = this.dependenciesService.getHiddenFields();
+  }
+
+  ngAfterContentChecked() {
+    this.cdr.detectChanges();
+  }
 
   ngOnInit(): void {
     this.form.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
@@ -51,10 +73,5 @@ export class FormComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     this.formSubmit.emit();
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next(undefined);
-    this.destroy$.complete();
   }
 }
