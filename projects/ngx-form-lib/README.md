@@ -82,7 +82,11 @@ export const CONFIG: Config = {
 <ngx-form-lib [config]="CONFIG"></ngx-form-lib>
 ```
 
-## List of supported component
+### Style error fix
+
+If you find breaking style with material form just install `peer dependencies` manually and rerun the project.
+
+### List of supported component
 
 1. Input
 2. Textarea
@@ -91,16 +95,18 @@ export const CONFIG: Config = {
 5. Button
 6. Dropdown
 
-## Style error fix
 
-If you find breaking style with material form just install `peer dependencies` manually and rerun the project.
+# Features and releases
+### Current features
 
-## Next release version features
+1. Dynamic components
+2. Field Dependencies
+3. Facets implementations (hidden, disable, set value)
 
-1. Field dependencies
-2. Form dependencies
-3. Facets (hidden, disable, set value)
+### Next release version features
 
-## Further help
+1. Form dependencies
+
+# Further help
 
 To get more help, issues or any suggestions for the `ngx-form-lib` mail to  `navdeep.dev2510@gmail.com` with subject `ngx-form-lib`.
