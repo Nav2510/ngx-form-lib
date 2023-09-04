@@ -12,46 +12,14 @@ export const MASTER_CONFIG: Config = {
     {
       sectionHeader: 'Section Header',
       fields: [
-        new Textarea({
-          rows: 8,
-          field: new Field({
-            name: 'textarea',
-            label: 'Label for the textarea',
-            value: 'Textarea value',
-            order: 1,
-            classes: ['ngf-col-12'],
-          }),
-        }),
         new Dropdown({
           field: new Field({
-            name: 'dependencyDropdown',
+            name: 'country',
             classes: ['ngf-col-12'],
             hint: '',
-            label: 'Select below form type to check field dependency',
-            facets: {
-              dependents: [
-                {
-                  fieldPath: 'awesomeLibrary',
-                  type: 'disabled',
-                  value: 'enable',
-                  setDependentValueTo: false,
-                },
-                {
-                  fieldPath: 'awesomeLibrary',
-                  type: 'value-change',
-                  value: 'valueChange',
-                  setDependentValueTo: 'Ngx-form-lib is awesome!!',
-                },
-                {
-                  fieldPath: 'textarea',
-                  type: 'disabled',
-                  value: 'disableTextarea',
-                  setDependentValueTo: true,
-                }
-              ],
-            },
+            label: 'Select country',
             order: 1,
-            placeholder: 'Select form',
+            placeholder: 'Select country',
             value: '',
             validators: [
               {
@@ -63,30 +31,111 @@ export const MASTER_CONFIG: Config = {
           }),
           options: [
             {
-              label: 'Enable Field',
-              value: 'enable',
+              label: 'India',
+              value: 'india',
             },
             {
-              label: 'Change value',
-              value: 'valueChange',
+              label: 'Japan',
+              value: 'japan',
             },
             {
-              label: 'Disable Textarea',
-              value: 'disableTextarea'
+              label: 'US',
+              value: 'us'
+            }
+          ],
+        }),
+        new Dropdown({
+          field: new Field({
+            name: 'state',
+            classes: ['ngf-col-12'],
+            hint: '',
+            label: 'Select state',
+            order: 1,
+            placeholder: 'Select state',
+            value: 'tokyo',
+            validators: [
+              {
+                type: 'required',
+                value: true,
+                message: 'Select at least one value',
+              },
+            ],
+            facets: {
+              disabled: true,
+              dependencies: [
+                {
+                  fieldPath: 'country',
+                  type: 'disabled',
+                  value: 'india',
+                  setDependentValueTo: false,
+                }
+              ]
+            },
+          }),
+          options: [
+            {
+              label: 'Rajasthan',
+              value: 'rajasthan',
+            },
+            {
+              label: 'Haryana',
+              value: 'haryana',
+            },
+            {
+              label: 'Punjab',
+              value: 'punjab'
+            },
+            {
+              label: 'Tokyo',
+              value: 'tokyo'
             }
           ],
         }),
         new Input({
           subType: 'text',
           field: new Field({
-            name: 'awesomeLibrary',
-            label: "Select dropdown field to alter it's property",
+            name: 'city',
+            label: "Enter city",
             order: 35,
             value: '',
             color: 'primary',
             classes: ['ngf-col-12'],
             facets: {
               disabled: true,
+              dependencies: [
+                {
+                  fieldPath: 'state',
+                  type: 'value-change',
+                  value: 'rajasthan',
+                  setDependentValueTo: 'Sri Ganganagar',
+                },
+                {
+                  fieldPath: 'state',
+                  type: 'disabled',
+                  value: 'rajasthan',
+                  setDependentValueTo: false,
+                },
+              ]
+            },
+          }),
+        }),
+        new Input({
+          subType: 'text',
+          field: new Field({
+            name: 'pincode',
+            label: "Enter pincode",
+            order: 35,
+            value: '',
+            color: 'primary',
+            classes: ['ngf-col-12'],
+            facets: {
+              disabled: true,
+              dependencies: [{
+                fieldPath: 'state',
+                type: 'value-change',
+                value: 'punjab',
+                setDependentValueTo: '335001'
+              }]
             },
           }),
         }),
@@ -94,11 +143,20 @@ export const MASTER_CONFIG: Config = {
           attribute: 'mat-flat-button',
           subType: 'submit',
           field: new Field({
-            name: 'viewInConsole',
+            name: 'button',
             label: 'View in console',
             order: 40,
             color: 'primary',
             classes: ['ngf-col-6'],
+            facets: {
+              hidden: true,
+              dependencies: [{
+                fieldPath: 'state',
+                type: 'hidden',
+                value: 'haryana',
+                setDependentValueTo: false,
+              }]
+            }
           }),
         }),
       ],

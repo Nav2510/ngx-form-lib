@@ -1,7 +1,7 @@
-import { Dependent } from "./dependent.model";
+import { Dependency } from "./dependency.model";
 
 export interface Facets {
     hidden?: boolean;
     disabled?: boolean;
-    dependents?: Dependent[];
+    dependencies?: Dependency[];
 }
