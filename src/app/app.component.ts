@@ -9,4 +9,8 @@ import { MASTER_CONFIG } from './form.mock';
 export class AppComponent {
   title = 'ngx-form-lib';
   data = MASTER_CONFIG;
+
+  onValueChanges(value: unknown) {
+    console.log(value)
+  }
 }

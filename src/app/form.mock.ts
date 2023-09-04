@@ -85,10 +85,6 @@ export const MASTER_CONFIG: Config = {
               label: 'Punjab',
               value: 'punjab'
             },
-            {
-              label: 'Tokyo',
-              value: 'tokyo'
-            }
           ],
         }),
         new Input({
@@ -97,23 +93,17 @@ export const MASTER_CONFIG: Config = {
             name: 'city',
             label: "Enter city",
             order: 35,
-            value: '',
+            value: 'Mumbai',
             color: 'primary',
             classes: ['ngf-col-12'],
             facets: {
-              disabled: true,
+              disabled: false,
               dependencies: [
                 {
                   fieldPath: 'state',
                   type: 'value-change',
                   value: 'rajasthan',
-                  setDependentValueTo: 'Sri Ganganagar',
-                },
-                {
-                  fieldPath: 'state',
-                  type: 'disabled',
-                  value: 'rajasthan',
-                  setDependentValueTo: false,
+                  setDependentValueTo: 'Jaipur',
                 },
               ]
             },
@@ -129,7 +119,7 @@ export const MASTER_CONFIG: Config = {
             color: 'primary',
             classes: ['ngf-col-12'],
             facets: {
-              disabled: true,
+              disabled: false,
               dependencies: [{
                 fieldPath: 'state',
                 type: 'value-change',
@@ -149,13 +139,7 @@ export const MASTER_CONFIG: Config = {
             color: 'primary',
             classes: ['ngf-col-6'],
             facets: {
-              hidden: true,
-              dependencies: [{
-                fieldPath: 'state',
-                type: 'hidden',
-                value: 'haryana',
-                setDependentValueTo: false,
-              }]
+              hidden: false,
             }
           }),
         }),

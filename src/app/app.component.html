@@ -1,5 +1,5 @@
 <div class="container">
   <div class="content">
-    <ngx-form-lib [config]="data"></ngx-form-lib>
+    <ngx-form-lib [config]="data" (valueChanges)="onValueChanges($event)"></ngx-form-lib>
   </div>
 </div>

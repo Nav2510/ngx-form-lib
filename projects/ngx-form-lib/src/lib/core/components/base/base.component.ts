@@ -27,11 +27,16 @@ export class BaseComponent implements OnInit {
 
   setupDependenciesControls(): void {
     if (this.config?.facets.hidden) {
-      this.dependenciesService.hideDependentField(this.config.name, {} as Dependency, this.config.facets.hidden)
+      this.dependenciesService.hideDependentField(
+        this.config.name,
+        {} as Dependency,
+        this.config.facets.hidden
+      );
     }
     if (this.config?.facets.dependencies) {
       this.group?.valueChanges.subscribe((formValue) => {
-        this.config && this.group &&
+        this.config &&
+          this.group &&
           this.dependenciesService.setDependenciesFields(
             this.group,
             this.config,
