@@ -14,7 +14,7 @@ export class Button extends Field<string> {
     attribute: ButtonAttribute;
   }) {
     super(params.field);
-    this.subType = params.subType || 'button';
-    this.attribute = params.attribute || 'mat-button';
+    this.subType = params.subType ?? 'button';
+    this.attribute = params.attribute ?? 'mat-button';
   }
 }

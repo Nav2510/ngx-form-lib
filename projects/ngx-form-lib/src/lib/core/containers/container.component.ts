@@ -1,4 +1,4 @@
-import { Component, ComponentRef, Input, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Input, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { ButtonComponent } from '../../features/button/button.component';

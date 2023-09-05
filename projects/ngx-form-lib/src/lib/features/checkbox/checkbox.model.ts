@@ -15,8 +15,8 @@ export class Checkbox extends Field<string> {
     showInline?: boolean;
   }) {
     super(params.field);
-    this.indeterminate = params.indeterminate || false;
-    this.labelPosition = params.labelPosition || 'after';
-    this.showInline = params.showInline || false;
+    this.indeterminate = params.indeterminate ?? false;
+    this.labelPosition = params.labelPosition ?? 'after';
+    this.showInline = params.showInline ?? false;
   }
 }
