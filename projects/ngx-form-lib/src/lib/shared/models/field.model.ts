@@ -42,9 +42,9 @@ export class Field<T> {
     this.facets = params.facets ?? { disabled: false, hidden: false };
     this.hint = params.hint ?? '';
     this.label = params.label ?? '';
-    this.method = params.method === undefined ? () => {} : params.method;
+    this.method = params.method ?? function(){};
     this.name = params.name ?? '';
-    this.order = params.order === undefined ? 1 : params.order;
+    this.order = params.order ?? 1;
     this.placeholder = params.placeholder ?? '';
     this.type = params.type ?? FieldTypeEnum.Input;
     this.value = params.value;
