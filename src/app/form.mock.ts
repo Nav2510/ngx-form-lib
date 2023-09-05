@@ -1,4 +1,4 @@
-import { Textarea, Dropdown, Button, Input } from "ngx-form-lib";
+import { Dropdown, Button, Input } from "ngx-form-lib";
 
 import { Config, Field, ParentConfig } from "ngx-form-lib/shared/models";
 

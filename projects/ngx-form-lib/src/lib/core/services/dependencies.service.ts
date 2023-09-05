@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Dependency } from '../../shared/models/dependency.model';
-import { Field, ParentConfig } from '../../shared';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Field } from '../../shared/models/field.model';
 
 @Injectable({
   providedIn: 'root',
@@ -44,9 +44,7 @@ export class DependenciesService {
     } else if (config.facets.disabled === false) {
       group.get(config.name)?.enable({ emitEvent: false });
     }
-    if (config.facets.hidden === true) {
-      this.hideDependentField(config.name, {} as Dependency, config.facets.hidden);
-    } else if (config.facets.hidden === false) {
+    if (config.facets.hidden === true || config.facets.hidden === false) {
       this.hideDependentField(config.name, {} as Dependency, config.facets.hidden);
     }
   }

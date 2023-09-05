@@ -6,7 +6,6 @@ import { Checkbox } from './checkbox.model';
 @Component({
   selector: 'ngf-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss']
 })
 export class CheckboxComponent extends BaseComponent{
   override config: Checkbox | null = null;

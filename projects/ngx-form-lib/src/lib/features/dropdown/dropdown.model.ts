@@ -6,20 +6,20 @@ import { PrefixSuffix } from '../../shared/models/prefix-suffix.model';
 export class Dropdown extends Field<string> {
   override type = FieldTypeEnum.Dropdown;
   options: Option[];
-  prefix: PrefixSuffix | undefined;
-  suffix: PrefixSuffix | undefined;
+  prefix?: PrefixSuffix;
+  suffix?: PrefixSuffix;
   multiple: boolean;
   constructor(params: {
     field?: Field<string>;
     options?: Option[];
-    prefix?: PrefixSuffix | undefined;
-    suffix?: PrefixSuffix | undefined;
+    prefix?: PrefixSuffix;
+    suffix?: PrefixSuffix;
     multiple?: boolean;
   }) {
     super(params.field);
-    this.options = params.options || [];
+    this.options = params.options ?? [];
     this.prefix = params.prefix;
     this.suffix = params.suffix;
-    this.multiple = params.multiple || false;
+    this.multiple = params.multiple ?? false;
   }
 }

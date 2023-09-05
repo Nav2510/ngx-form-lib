@@ -5,9 +5,9 @@ import { Field } from '../../shared/models/field.model';
 
 export class Input extends Field<string> {
   override type = FieldTypeEnum.Input;
-  prefix: PrefixSuffix | undefined;
+  prefix?: PrefixSuffix;
   subType: FieldSubType;
-  suffix: PrefixSuffix | undefined;
+  suffix?: PrefixSuffix;
 
   constructor(params: {
     field?: Field<string>;
@@ -16,7 +16,7 @@ export class Input extends Field<string> {
     suffix?: PrefixSuffix;
   }) {
     super(params.field);
-    this.subType = params.subType || 'text';
+    this.subType = params.subType ?? 'text';
       this.prefix = params.prefix;
       this.suffix = params.suffix;
   }

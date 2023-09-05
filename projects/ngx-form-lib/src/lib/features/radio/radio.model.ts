@@ -13,7 +13,7 @@ export class Radio extends Field<string> {
     showInline?: boolean;
   }) {
     super(params.field);
-    this.showInline = params.showInline || false;
-    this.options = params.options || [];
+    this.showInline = params.showInline ?? false;
+    this.options = params.options ?? [];
   }
 }
