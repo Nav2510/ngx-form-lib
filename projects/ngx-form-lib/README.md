@@ -1,6 +1,9 @@
 ![alt text](https://github.com/Nav2510/form-lib-workspace/blob/develop/src/assets/icons/logo-lg.svg?raw=true)
 
-**Build dynamic form in Angular, easy and fast.**
+
+## Create dynamic forms in Angular quickly and effortlessly
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Nav2510_ngx-form-lib&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Nav2510_ngx-form-lib)
 
 This package simplifies Angular form creation with full Angular reactive capabilities by offering a straightforward class configuration. It leverages Angular Material, utilizing material themes for enhanced functionality.
 
