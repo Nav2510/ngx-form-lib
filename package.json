@@ -11,6 +11,16 @@
     "type": "git",
     "url": "https://github.com/Nav2510/ngx-form-lib.git"
   },
+  "keywords": [
+    "angular",
+    "angular forms",
+    "reactive-forms",
+    "angular-material",
+    "dynamic forms",
+    "form-library",
+    "json-forms",
+    "type-forms"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -18,6 +28,7 @@
     "watch": "ng build ngx-form-lib --watch --configuration development",
     "test": "ng test"
   },
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.3.0",
@@ -48,6 +59,5 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^13.0.0",
     "typescript": "~4.6.2"
-  },
-  "license": "MIT"
+  }
 }
