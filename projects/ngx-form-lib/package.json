@@ -12,12 +12,13 @@
     "type": "git",
     "url": "https://github.com/Nav2510/ngx-form-lib.git"
   },
+  "license": "MIT",
   "keywords": [
     "angular",
-    "angular-forms",
+    "angular forms",
     "reactive-forms",
     "angular-material",
-    "dynamic-forms",
+    "dynamic forms",
     "form-library",
     "json-forms",
     "type-forms"
