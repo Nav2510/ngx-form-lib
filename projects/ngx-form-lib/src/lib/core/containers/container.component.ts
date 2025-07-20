@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 import { ButtonComponent } from '../../features/button/button.component';
 import { CheckboxComponent } from '../../features/checkbox/checkbox.component';
@@ -27,7 +27,7 @@ const componentMapping: {[key in FieldTypeEnum]: Type<BaseComponent>} = {
 })
 export class ContainerComponent implements OnInit {
   @Input() config: Field<any> = {} as Field<any>;
-  @Input() group: FormGroup | null = null;
+  @Input() group: UntypedFormGroup | null = null;
   @Input() parentConfig: ParentConfig | null = null;
   @ViewChild('dynamicComponent', { static: true, read: ViewContainerRef }) dynamicComponent!: ViewContainerRef;
 
