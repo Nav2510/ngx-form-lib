@@ -12,8 +12,8 @@ import { Dependency } from '../../../shared/models/dependency.model';
   template: '',
 })
 @AutoUnsubscribe()
-export class BaseComponent implements OnInit {
-  @Input() config: Field<string> | null = null;
+export class BaseComponent<T = unknown> implements OnInit {
+  @Input() config: Field<T> | null = null;
   @Input() group: UntypedFormGroup | null = null;
   @Input() parentConfig: ParentConfig | null = null;
 

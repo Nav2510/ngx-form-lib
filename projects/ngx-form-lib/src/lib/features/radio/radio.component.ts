@@ -6,8 +6,8 @@ import { Radio } from './radio.model';
 @Component({
   selector: 'ngf-radio',
   templateUrl: './radio.component.html',
-  styleUrls: ['./radio.component.scss']
+  styleUrls: ['./radio.component.scss'],
 })
-export class RadioComponent extends BaseComponent{
+export class RadioComponent extends BaseComponent<string> {
   override config: Radio | null = null;
 }

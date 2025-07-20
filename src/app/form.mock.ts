@@ -1,6 +1,6 @@
-import { Dropdown, Button, Input } from "ngx-form-lib";
+import { Dropdown, Button, Input } from 'ngx-form-lib';
 
-import { Config, Field, ParentConfig } from "ngx-form-lib/shared/models";
+import { Config, Field, ParentConfig } from 'ngx-form-lib/shared/models';
 
 export const MASTER_CONFIG: Config = {
   header: 'Demo Awesome Form',
@@ -13,7 +13,7 @@ export const MASTER_CONFIG: Config = {
       sectionHeader: 'Section Header',
       fields: [
         new Dropdown({
-          field: new Field({
+          field: new Field<string>({
             name: 'country',
             classes: ['ngf-col-12'],
             hint: '',
@@ -40,12 +40,12 @@ export const MASTER_CONFIG: Config = {
             },
             {
               label: 'US',
-              value: 'us'
-            }
+              value: 'us',
+            },
           ],
         }),
         new Dropdown({
-          field: new Field({
+          field: new Field<string>({
             name: 'state',
             classes: ['ngf-col-12'],
             hint: '',
@@ -68,8 +68,8 @@ export const MASTER_CONFIG: Config = {
                   type: 'disabled',
                   value: 'india',
                   setDependentValueTo: false,
-                }
-              ]
+                },
+              ],
             },
           }),
           options: [
@@ -83,15 +83,15 @@ export const MASTER_CONFIG: Config = {
             },
             {
               label: 'Punjab',
-              value: 'punjab'
+              value: 'punjab',
             },
           ],
         }),
         new Input({
           subType: 'text',
-          field: new Field({
+          field: new Field<string>({
             name: 'city',
-            label: "Enter city",
+            label: 'Enter city',
             order: 35,
             value: 'Mumbai',
             color: 'primary',
@@ -105,34 +105,36 @@ export const MASTER_CONFIG: Config = {
                   value: 'rajasthan',
                   setDependentValueTo: 'Jaipur',
                 },
-              ]
+              ],
             },
           }),
         }),
         new Input({
           subType: 'text',
-          field: new Field({
+          field: new Field<string>({
             name: 'pincode',
-            label: "Enter pincode",
+            label: 'Enter pincode',
             order: 35,
             value: '',
             color: 'primary',
             classes: ['ngf-col-12'],
             facets: {
               disabled: false,
-              dependencies: [{
-                fieldPath: 'state',
-                type: 'value-change',
-                value: 'punjab',
-                setDependentValueTo: '335001'
-              }]
+              dependencies: [
+                {
+                  fieldPath: 'state',
+                  type: 'value-change',
+                  value: 'punjab',
+                  setDependentValueTo: '335001',
+                },
+              ],
             },
           }),
         }),
         new Button({
           attribute: 'mat-flat-button',
           subType: 'submit',
-          field: new Field({
+          field: new Field<string>({
             name: 'button',
             label: 'View in console',
             order: 40,
@@ -140,11 +142,10 @@ export const MASTER_CONFIG: Config = {
             classes: ['ngf-col-6'],
             facets: {
               hidden: false,
-            }
+            },
           }),
         }),
       ],
     },
   ],
 };
-  
