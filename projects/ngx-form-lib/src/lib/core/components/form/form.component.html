@@ -1,20 +1,33 @@
 <div class="ngf-form-container">
   <h3 class="ngf-h3 ngf-form-header">{{ config.header }}</h3>
-  <form class="ngf-form" *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  @if (form) {
+  <form class="ngf-form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <ng-container formArrayName="sections">
-      <section 
-      class="ngf-section-wrapper" 
-      *ngFor="let sectionItem of config.sections; let i = index"
-      [formGroupName]="i"
-      > 
-      <h4 class="ngf-h4" *ngIf="sectionItem.sectionHeader">{{ sectionItem.sectionHeader }}</h4>
-      <div class="ngf-section">
-        <div [hidden]="(hiddenFields$ | async)[configItem.name] || false" *ngFor="let configItem of sectionItem.fields  | sortByOrder" class="ngf-field-container" [ngClass]="configItem.classes">
-          <ngf-container [parentConfig]="config.parentConfig" [config]="configItem" [group]="getFormControl('sections', i)">
-          </ngf-container>
+      @for (sectionItem of config.sections; track sectionItem; let i = $index) {
+      <section class="ngf-section-wrapper" [formGroupName]="i">
+        @if (sectionItem.sectionHeader) {
+        <h4 class="ngf-h4">{{ sectionItem.sectionHeader }}</h4>
+        }
+        <div class="ngf-section">
+          @for (configItem of sectionItem.fields | sortByOrder; track
+          configItem.name) {
+          <div
+            [hidden]="(hiddenFields$ | async)[configItem.name] || false"
+            class="ngf-field-container"
+            [ngClass]="configItem.classes"
+          >
+            <ngf-container
+              [parentConfig]="config.parentConfig"
+              [config]="configItem"
+              [group]="getFormControl('sections', i)"
+            >
+            </ngf-container>
+          </div>
+          }
         </div>
-      </div>
       </section>
+      }
     </ng-container>
   </form>
+  }
 </div>

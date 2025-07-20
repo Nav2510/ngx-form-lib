@@ -1,4 +1,5 @@
-<div *ngIf="config" class="ngf-wrapper ngf-button-wrapper">
+@if (config) {
+<div class="ngf-wrapper ngf-button-wrapper">
   <button
     mat-button
     [ngClass]="{
@@ -19,21 +20,15 @@
     [type]="config.subType"
     [color]="parentConfig | setParentConfig : config : 'color'"
   >
-    <ng-container
-      [ngTemplateOutlet]="
-        config.attribute === ButtonAttribute.MatIconButton ||
-        config.attribute === ButtonAttribute.MatFab ||
-        config.attribute === ButtonAttribute.MatMiniFab
-          ? iconTemplate
-          : labelTemplate
-      "
-      [ngTemplateOutletContext]="{ label: config.label }"
-    ></ng-container>
+    @if (config.attribute === ButtonAttribute.MatIconButton || config.attribute
+    === ButtonAttribute.MatFab || config.attribute ===
+    ButtonAttribute.MatMiniFab) {
+    <mat-icon>
+      {{ config.label }}
+    </mat-icon>
+    } @else {
+    {{ config.label }}
+    }
   </button>
 </div>
-<ng-template #labelTemplate let-label="label">{{ label }}</ng-template>
-<ng-template #iconTemplate let-label="label">
-  <mat-icon>
-    {{ label }}
-  </mat-icon>
-</ng-template>
+}

@@ -1,31 +1,46 @@
-<div *ngIf="group && config" [formGroup]="group" class="ngf-wrapper ngf-dropdown-wrapper">
-  <mat-form-field 
-      class="ngf-form-field" 
-      [appearance]="parentConfig | setParentConfig: config : 'appearance'"
-      [color]="parentConfig | setParentConfig: config : 'color'"
-    >
-    <mat-label *ngIf="config.label" [attr.for]="config.name">{{ config.label }}</mat-label>
-    <mat-select [formControlName]="config.name" *ngIf="!config.multiple">
-      <mat-option *ngFor="let option of config.options" [value]="option.value">{{ option.label }}</mat-option>
+@if (group && config) {
+<div [formGroup]="group" class="ngf-wrapper ngf-dropdown-wrapper">
+  <mat-form-field
+    class="ngf-form-field"
+    [appearance]="parentConfig | setParentConfig : config : 'appearance'"
+    [color]="parentConfig | setParentConfig : config : 'color'"
+  >
+    @if (config.label) {
+    <mat-label [attr.for]="config.name">{{ config.label }}</mat-label>
+    } @if (!config.multiple) {
+    <mat-select [formControlName]="config.name">
+      @for (option of config.options; track option.value) {
+      <mat-option [value]="option.value">{{ option.label }}</mat-option>
+      }
     </mat-select>
-    <mat-select [formControlName]="config.name" *ngIf="config.multiple" multiple>
+    } @else {
+    <mat-select [formControlName]="config.name" multiple>
       <!-- <mat-select-trigger>
-        TODO: Added select trigger for multiple and custom value
-      </mat-select-trigger> -->
-      <mat-option *ngFor="let option of config.options" [value]="option.value">{{ option.label }}</mat-option>
+            TODO: Added select trigger for multiple and custom value
+          </mat-select-trigger> -->
+      @for (option of config.options; track option.value) {
+      <mat-option [value]="option.value">{{ option.label }}</mat-option>
+      }
     </mat-select>
-    <span *ngIf="config.prefix" matPrefix>
+    } @if (config.prefix) {
+    <span matPrefix>
       <ngf-prefix-suffix [config]="config.prefix"></ngf-prefix-suffix>
     </span>
-    <span *ngIf="config.suffix" matSuffix>
+    } @if (config.suffix) {
+    <span matSuffix>
       <ngf-prefix-suffix [config]="config.suffix"></ngf-prefix-suffix>
     </span>
-    <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
-    <mat-error *ngFor="let validationItem of config.validators">
-      <ng-container *ngIf="group.controls[config.name].hasError(validationItem.type) &&
-                    (group.controls[config.name].dirty || group.controls[config.name].touched)">
-        {{ validationItem.message }}
-      </ng-container>
+    } @if (config.hint) {
+    <mat-hint>{{ config.hint }}</mat-hint>
+    } @for (validationItem of config.validators; track validationItem.type) {
+    <mat-error>
+      @if (group.controls[config.name].hasError(validationItem.type) &&
+      (group.controls[config.name].dirty ||
+      group.controls[config.name].touched)) {
+      {{ validationItem.message }}
+      }
     </mat-error>
+    }
   </mat-form-field>
 </div>
+}
