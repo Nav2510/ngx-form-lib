@@ -5,7 +5,7 @@ import { Config, Field, ParentConfig } from 'ngx-form-lib/shared/models';
 export const MASTER_CONFIG: Config = {
   header: 'Demo Awesome Form',
   parentConfig: new ParentConfig({
-    appearance: 'outline',
+    appearance: 'fill',
     color: 'primary',
   }),
   sections: [
@@ -132,7 +132,7 @@ export const MASTER_CONFIG: Config = {
           }),
         }),
         new Button({
-          attribute: 'mat-flat-button',
+          attribute: 'mat-fill',
           subType: 'submit',
           field: new Field<string>({
             name: 'button',

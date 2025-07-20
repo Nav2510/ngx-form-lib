@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { BaseModule } from '../../core/components/base/base.module';
 import { CheckboxComponent } from './checkbox.component';
@@ -9,6 +9,6 @@ import { CheckboxComponent } from './checkbox.component';
 @NgModule({
   declarations: [CheckboxComponent],
   imports: [BaseModule, CommonModule, MatCheckboxModule],
-  exports: [CheckboxComponent]
+  exports: [CheckboxComponent],
 })
 export class CheckboxModule {}

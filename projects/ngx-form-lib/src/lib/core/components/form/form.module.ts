@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
+import { MatSelectModule } from '@angular/material/select';
 
 import { FormComponent } from './form.component';
 import { ContainerModule } from '../../containers/container.module';
 import { SortByOrderModule } from '../../../shared/pipes/sort-by-order/sort-by-order.module';
-
 
 @NgModule({
   declarations: [FormComponent],
@@ -16,7 +15,7 @@ import { SortByOrderModule } from '../../../shared/pipes/sort-by-order/sort-by-o
     ContainerModule,
     ReactiveFormsModule,
     SortByOrderModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   exports: [FormComponent],
 })
