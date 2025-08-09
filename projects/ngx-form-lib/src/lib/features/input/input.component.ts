@@ -7,6 +7,6 @@ import { Input } from './input.model';
   selector: 'ngf-input',
   templateUrl: './input.component.html',
 })
-export class InputComponent extends BaseComponent{
+export class InputComponent extends BaseComponent<string> {
   override config: Input | null = null;
 }

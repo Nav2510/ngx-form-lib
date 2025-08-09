@@ -8,7 +8,6 @@ import { FormComponent } from './form.component';
 import { ContainerModule } from '../../containers/container.module';
 import { SortByOrderModule } from '../../../shared/pipes/sort-by-order/sort-by-order.module';
 
-
 @NgModule({
   declarations: [FormComponent],
   imports: [
@@ -16,7 +15,7 @@ import { SortByOrderModule } from '../../../shared/pipes/sort-by-order/sort-by-o
     ContainerModule,
     ReactiveFormsModule,
     SortByOrderModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   exports: [FormComponent],
 })

@@ -9,7 +9,7 @@ import { Button } from './button.model';
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
 })
-export class ButtonComponent extends BaseComponent {
+export class ButtonComponent extends BaseComponent<string> {
   override config: Button | null = null;
   ButtonAttribute = ButtonAttributeEnum;
 }

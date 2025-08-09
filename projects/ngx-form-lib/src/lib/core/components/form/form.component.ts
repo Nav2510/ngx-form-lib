@@ -8,7 +8,7 @@ import {
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Observable, Subject, takeUntil } from 'rxjs';
 
 import { Config } from '../../../shared/models/config.model';
@@ -37,7 +37,7 @@ export class FormComponent implements OnInit {
   @Output() valueChanges = new EventEmitter<any>();
   @Output() formSubmit = new EventEmitter<void>();
 
-  form: FormGroup = {} as FormGroup;
+  form: UntypedFormGroup = {} as UntypedFormGroup;
   hiddenFields$: Observable<any> = this.dependenciesService.getHiddenFields();
   private readonly destroy$ = new Subject<void>();
 
@@ -67,8 +67,8 @@ export class FormComponent implements OnInit {
     }
   }
 
-  getFormControl(formGroupName: string, index: number): FormGroup {
-    return this.form.get(`${formGroupName}.${index}`) as FormGroup;
+  getFormControl(formGroupName: string, index: number): UntypedFormGroup {
+    return this.form.get(`${formGroupName}.${index}`) as UntypedFormGroup;
   }
 
   onSubmit(): void {

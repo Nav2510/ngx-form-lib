@@ -1,7 +1,7 @@
 {
   "name": "ngx-form-lib",
-  "version": "0.2.0",
-  "description": "Dynamic form library which help angular devs easily create angular reactive complex forms by providing json configuration.",
+  "version": "0.3.0",
+  "description": "Dynamic form library for Angular 18 with Material 3 support. Create complex reactive forms easily using JSON configuration with modern Angular 18 control flow syntax.",
   "author": {
     "email": "navdeep.dev2510@gmail.com",
     "name": "Navdeep Singh",
@@ -15,19 +15,25 @@
   "license": "MIT",
   "keywords": [
     "angular",
+    "angular-18",
     "angular forms",
     "reactive-forms",
     "angular-material",
+    "material-3",
     "dynamic forms",
     "form-library",
     "json-forms",
-    "type-forms"
+    "type-forms",
+    "control-flow",
+    "typescript"
   ],
   "peerDependencies": {
-    "@angular/common": "^13.3.0",
-    "@angular/core": "^13.3.0",
-    "@angular/cdk": "^13.3.5",
-    "@angular/material": "^13.3.5"
+    "@angular/common": "^18.0.0",
+    "@angular/core": "^18.0.0",
+    "@angular/cdk": "^18.0.0",
+    "@angular/material": "^18.0.0",
+    "@angular/forms": "^18.0.0",
+    "@angular/platform-browser": "^18.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormArray, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 import { Validation } from '../../shared/models/validation.model';
 import { ValidationTypeEnum } from '../../shared/models/validation-type.model';
@@ -9,20 +9,20 @@ import { Section } from '../../shared/models/section.model';
   providedIn: 'root',
 })
 export class FormsService {
-  initForm(sections: Section[]): FormGroup {
-    const list: FormGroup[] = [];
+  initForm(sections: Section[]): UntypedFormGroup {
+    const list: UntypedFormGroup[] = [];
     sections.forEach((sectionItem) => {
-      const group: { [key: string]: FormControl } = {};
+      const group: { [key: string]: UntypedFormControl } = {};
       sectionItem.fields.forEach((config) => {
-        group[config.name] = new FormControl(
+        group[config.name] = new UntypedFormControl(
           { value: config.value, disabled: config.facets?.disabled },
           config.validators ? this.createValidations(config.validators) : null
         );
       });
-      list.push(new FormGroup(group))
+      list.push(new UntypedFormGroup(group))
     })
 
-    return new FormGroup({sections: new FormArray(list)});
+    return new UntypedFormGroup({sections: new UntypedFormArray(list)});
   }
 
   createValidations(validators: Validation[]): ValidatorFn[] | null {

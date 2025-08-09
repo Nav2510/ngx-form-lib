@@ -7,7 +7,7 @@ import { Dropdown } from './dropdown.model';
   selector: 'lib-dropdown',
   templateUrl: './dropdown.component.html',
 })
-export class DropdownComponent extends BaseComponent implements OnInit {
+export class DropdownComponent extends BaseComponent<string> implements OnInit {
   override config: Dropdown | null = null;
 
   /**
