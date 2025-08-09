@@ -3,7 +3,7 @@
 // font-weight
 $font-light: 300;
 $font-regular: 400;
-$font-medium: 500; 
+$font-medium: 500;
 $font-bold: 700;
 
 // color palette
@@ -12,9 +12,7 @@ $black-100: #e6e6e6;
 $black-050: #f0f0f0;
 $black-000: #ffffff;
 
-
 $primary: #3f51b5;
-
 
 // Grid-width
 .ngf-col-12 {
@@ -54,18 +52,82 @@ $primary: #3f51b5;
 }
 
 // Heading elements
-.ngf-h1, .ngf-h2, .ngf-h3, .ngf-h4, .ngf-h5, .ngf-h6 {
+.ngf-h1,
+.ngf-h2,
+.ngf-h3,
+.ngf-h4,
+.ngf-h5,
+.ngf-h6 {
   font-weight: $font-medium;
 }
-
 
 // Mat-Form-field
 .ngf-form-field.mat-form-field {
   width: 100%;
+
+  // Material 3 form field enhancements
+  .mat-mdc-form-field-focus-overlay {
+    background-color: transparent;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    border-radius: 8px; // Material 3 uses larger border radius
+  }
+
+  .mat-mdc-form-field-subscript-wrapper {
+    font-size: 12px; // Material 3 typography
+  }
 }
 
 // Mat-Error
 .ngf-field-error {
   display: flex;
   justify-content: space-between;
+  font-size: 12px; // Material 3 typography
+  color: var(--mdc-theme-error);
+}
+
+// Material 3 global enhancements
+.mat-mdc-form-field {
+  .mat-mdc-form-field-focus-overlay {
+    background-color: transparent;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    border-radius: 8px;
+  }
+}
+
+// Material 3 button enhancements
+.mat-mdc-button,
+.mat-mdc-raised-button,
+.mat-mdc-outlined-button,
+.mat-mdc-unelevated-button {
+  border-radius: 20px;
+  font-weight: 500;
+  text-transform: none;
+  transition: all 0.2s ease-in-out;
+}
+
+// Material 3 select enhancements
+.mat-mdc-select {
+  .mat-mdc-select-trigger {
+    border-radius: 8px;
+  }
+}
+
+// Material 3 checkbox enhancements
+.mat-mdc-checkbox {
+  .mdc-checkbox {
+    border-radius: 4px; // Material 3 uses rounded checkboxes
+  }
+}
+
+// Material 3 radio enhancements
+.mat-mdc-radio-button {
+  .mdc-radio {
+    .mdc-radio__background {
+      border-radius: 50%; // Material 3 uses circular radio buttons
+    }
+  }
 }

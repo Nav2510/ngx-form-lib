@@ -7,6 +7,6 @@ import { Textarea } from './textarea.model';
   selector: 'ngf-textarea',
   templateUrl: './textarea.component.html',
 })
-export class TextareaComponent extends BaseComponent{
+export class TextareaComponent extends BaseComponent<string> {
   override config: Textarea | null = null;
 }

@@ -1,31 +1,50 @@
-<div *ngIf="config && group" [formGroup]="group" class="ngf-wrapper ngf-textarea-wrapper">
-  <mat-form-field 
-    class="ngf-form-field" 
-    [appearance]="parentConfig | setParentConfig: config : 'appearance'"
-    [color]="parentConfig | setParentConfig: config : 'color'"
+@if (config && group) {
+<div [formGroup]="group" class="ngf-wrapper ngf-textarea-wrapper">
+  <mat-form-field
+    class="ngf-form-field"
+    [appearance]="parentConfig | setParentConfig : config : 'appearance'"
+    [color]="parentConfig | setParentConfig : config : 'color'"
   >
-    <mat-label [attr.for]="config.name">{{config.label}}</mat-label>
-    <textarea matInput class="form-control" [formControlName]="config.name" [id]="config.name"
-      [placeholder]="config.placeholder" [rows]="config.rows"></textarea>
-    <mat-hint *ngIf="config.hint">{{ config.hint }}</mat-hint>
-    <span *ngIf="config.prefix" matPrefix>
+    <mat-label [attr.for]="config.name">{{ config.label }}</mat-label>
+    <textarea
+      matInput
+      class="form-control"
+      [formControlName]="config.name"
+      [id]="config.name"
+      [placeholder]="config.placeholder"
+      [rows]="config.rows"
+    ></textarea>
+    @if (config.hint) {
+    <mat-hint>{{ config.hint }}</mat-hint>
+    } @if (config.prefix) {
+    <span matPrefix>
       <ngf-prefix-suffix [config]="config.prefix"></ngf-prefix-suffix>
     </span>
-    <span *ngIf="config.suffix" matSuffix>
+    } @if (config.suffix) {
+    <span matSuffix>
       <ngf-prefix-suffix [config]="config.suffix"></ngf-prefix-suffix>
     </span>
+    }
     <!-- TODO: Try moving mat-error to a component and implement dynamic error message -->
-    <mat-error class="ngf-field-error" *ngFor="let validationItem of config.validators">
-      <ng-container *ngIf="group.controls[config.name].hasError(validationItem.type) &&
-                        (group.controls[config.name].dirty || group.controls[config.name].touched)">
-        <span>{{ validationItem.message }}</span>
-        <span
-          *ngIf="validationItem.showDynamicError && this.group.controls[config.name].getError(validationItem.type)?.actualLength as actualLength">
-          {{actualLength}}/
-          {{this.group.controls[config.name].getError(validationItem.type)?.requiredLength}}
-        </span>
-      </ng-container>
+    @for (validationItem of config.validators; track validationItem.type) {
+    <mat-error class="ngf-field-error">
+      @if (group.controls[config.name].hasError(validationItem.type) &&
+      (group.controls[config.name].dirty ||
+      group.controls[config.name].touched)) {
+      <span>{{ validationItem.message }}</span>
+      @if (validationItem.showDynamicError &&
+      this.group.controls[config.name].getError(validationItem.type)?.actualLength;
+      as actualLength) {
+      <span>
+        {{ actualLength }}/
+        {{
+          this.group.controls[config.name].getError(validationItem.type)
+            ?.requiredLength
+        }}
+      </span>
+      } }
     </mat-error>
-
+    }
   </mat-form-field>
 </div>
+}

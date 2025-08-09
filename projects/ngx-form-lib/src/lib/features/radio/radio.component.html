@@ -1,13 +1,19 @@
-<div *ngIf="group && config" [formGroup]="group" class="ngf-wrapper ngf-radio-wrapper">
-  <label *ngIf="config.label" [attr.for]="config.name">{{config.label}}</label>
-  <mat-radio-group 
-    class="ngf-radio-group" 
-    [ngClass]="{'ngf-inline': config.showInline}"
+@if (group && config) {
+<div [formGroup]="group" class="ngf-wrapper ngf-radio-wrapper">
+  @if (config.label) {
+  <label [attr.for]="config.name">{{ config.label }}</label>
+  }
+  <mat-radio-group
+    class="ngf-radio-group"
+    [ngClass]="{ 'ngf-inline': config.showInline }"
     [formControlName]="config.name"
-    [color]="parentConfig | setParentConfig: config : 'color'"
+    [color]="parentConfig | setParentConfig : config : 'color'"
   >
-    <mat-radio-button *ngFor="let option of config.options" class="ngf-radio-button" [value]="option.value">
-      {{option.label}}
+    @for (option of config.options; track option.value) {
+    <mat-radio-button class="ngf-radio-button" [value]="option.value">
+      {{ option.label }}
     </mat-radio-button>
+    }
   </mat-radio-group>
 </div>
+}

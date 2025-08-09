@@ -7,6 +7,6 @@ import { Checkbox } from './checkbox.model';
   selector: 'ngf-checkbox',
   templateUrl: './checkbox.component.html',
 })
-export class CheckboxComponent extends BaseComponent{
+export class CheckboxComponent extends BaseComponent<string> {
   override config: Checkbox | null = null;
 }

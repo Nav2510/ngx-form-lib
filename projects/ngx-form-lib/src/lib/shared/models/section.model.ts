@@ -1,6 +1,6 @@
-import { Field } from "./field.model";
+import { Field } from './field.model';
 
 export interface Section {
   sectionHeader?: string;
-  fields: Field<any>[];
+  fields: Field<unknown>[];
 }

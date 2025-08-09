@@ -8,7 +8,12 @@ import { BaseComponent } from './base.component';
 import { PrefixSuffixModule } from '../../../shared/components/prefix-suffix/prefix-suffix.module';
 import { SetParentConfigModule } from '../../../shared/pipes/set-parent-config/set-parent-config.module';
 
-const MODULES = [MatFormFieldModule, PrefixSuffixModule, ReactiveFormsModule, SetParentConfigModule];
+const MODULES = [
+  MatFormFieldModule,
+  PrefixSuffixModule,
+  ReactiveFormsModule,
+  SetParentConfigModule,
+];
 
 @NgModule({
   declarations: [BaseComponent],

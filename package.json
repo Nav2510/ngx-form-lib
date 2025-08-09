@@ -1,6 +1,6 @@
 {
   "name": "ngx-form-lib",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "email": "navdeep.dev2510@gmail.com",
     "name": "Navdeep Singh",
@@ -29,26 +29,26 @@
     "test": "ng test"
   },
   "license": "MIT",
-  "private": true,
+  "private": false,
   "dependencies": {
-    "@angular/animations": "~13.3.0",
-    "@angular/cdk": "^13.3.5",
-    "@angular/common": "~13.3.0",
-    "@angular/compiler": "~13.3.0",
-    "@angular/core": "~13.3.0",
-    "@angular/forms": "~13.3.0",
-    "@angular/material": "^13.3.5",
-    "@angular/platform-browser": "~13.3.0",
-    "@angular/platform-browser-dynamic": "~13.3.0",
-    "@angular/router": "~13.3.0",
+    "@angular/animations": "^18.2.13",
+    "@angular/cdk": "^18.2.14",
+    "@angular/common": "^18.2.13",
+    "@angular/compiler": "^18.2.13",
+    "@angular/core": "^18.2.13",
+    "@angular/forms": "^18.2.13",
+    "@angular/material": "^18.2.14",
+    "@angular/platform-browser": "^18.2.13",
+    "@angular/platform-browser-dynamic": "^18.2.13",
+    "@angular/router": "^18.2.13",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.14.10"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~13.3.0",
-    "@angular/cli": "~13.3.0",
-    "@angular/compiler-cli": "~13.3.0",
+    "@angular-devkit/build-angular": "^18.2.20",
+    "@angular/cli": "^18.2.20",
+    "@angular/compiler-cli": "^18.2.13",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~4.0.0",
@@ -57,7 +57,7 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "ng-packagr": "^13.0.0",
-    "typescript": "~4.6.2"
+    "ng-packagr": "^18.2.1",
+    "typescript": "~5.4.5"
   }
 }

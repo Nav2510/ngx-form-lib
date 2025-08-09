@@ -6,7 +6,7 @@ import { Field } from '../../models/field.model';
   name: 'sortByOrder',
 })
 export class SortByOrderPipe implements PipeTransform {
-  transform(fields: Field<any>[], ...args: unknown[]): Field<any>[] {
+  transform(fields: Field<unknown>[], ...args: unknown[]): Field<unknown>[] {
     return fields.sort((a, b) => a.order - b.order);
   }
 }

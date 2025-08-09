@@ -1,5 +1,33 @@
 .ngf-button-wrapper {
   button {
     width: 100%;
+    border-radius: 20px; // Material 3 uses rounded buttons
+    font-weight: 500; // Material 3 typography
+    text-transform: none; // Material 3 doesn't use uppercase
+    transition: all 0.2s ease-in-out; // Smooth transitions
+
+    // Material 3 button variants
+    &.mat-fill {
+      background-color: var(--mdc-filled-button-container-color);
+      color: var(--mdc-filled-button-label-text-color);
+    }
+
+    &.mat-outline {
+      border: 1px solid var(--mdc-outlined-button-outline-color);
+      color: var(--mdc-outlined-button-label-text-color);
+    }
+
+    &.mat-text {
+      color: var(--mdc-text-button-label-text-color);
+    }
+
+    &.mat-elevated {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    &.mat-tonal {
+      background-color: var(--mdc-filled-tonal-button-container-color);
+      color: var(--mdc-filled-tonal-button-label-text-color);
+    }
   }
 }

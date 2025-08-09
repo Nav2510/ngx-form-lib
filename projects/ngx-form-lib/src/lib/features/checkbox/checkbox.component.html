@@ -1,11 +1,15 @@
-<div *ngIf="group && config" [formGroup]="group" class="ngf-wrapper ngf-checkbox-wrapper">
-  <mat-checkbox 
-    class="ngf-checkbox" 
-    [formControlName]="config.name" 
+@if (group && config) {
+<div [formGroup]="group" class="ngf-wrapper ngf-checkbox-wrapper">
+  <mat-checkbox
+    class="ngf-checkbox"
+    [formControlName]="config.name"
     [indeterminate]="config.indeterminate"
     [labelPosition]="config.labelPosition"
-    [color]="parentConfig | setParentConfig: config : 'color'"
+    [color]="parentConfig | setParentConfig : config : 'color'"
   >
-    <mat-label *ngIf="config.label" [attr.for]="config.name">{{ config.label }}</mat-label>
+    @if (config.label) {
+    <mat-label [attr.for]="config.name">{{ config.label }}</mat-label>
+    }
   </mat-checkbox>
 </div>
+}
