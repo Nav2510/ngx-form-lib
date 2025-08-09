@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { Field } from '../../../shared/models/field.model';
@@ -12,9 +12,9 @@ import { Dependency } from '../../../shared/models/dependency.model';
   template: '',
 })
 @AutoUnsubscribe()
-export class BaseComponent implements OnInit {
-  @Input() config: Field<string> | null = null;
-  @Input() group: FormGroup | null = null;
+export class BaseComponent<T = unknown> implements OnInit {
+  @Input() config: Field<T> | null = null;
+  @Input() group: UntypedFormGroup | null = null;
   @Input() parentConfig: ParentConfig | null = null;
 
   subscription: Subscription = new Subscription();

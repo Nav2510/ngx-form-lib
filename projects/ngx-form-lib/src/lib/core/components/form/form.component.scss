@@ -1,9 +1,11 @@
 @import "../../../../../styles";
 
+// Material 3 enhancements
 .ngf-form-container {
   color: $black-500;
   background-color: $black-050;
-  border-radius: 5px;
+  border-radius: 12px; // Material 3 uses larger border radius
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); // Material 3 elevation
   .ngf-form-header {
     text-transform: uppercase;
     padding: 25px 15px 20px 15px;
@@ -15,10 +17,10 @@
 
   .ngf-form {
     padding: 10px;
-  
+
     .ngf-section-wrapper {
       background-color: $black-000;
-      border-radius: 5px;
+      border-radius: 8px; // Material 3 uses larger border radius
 
       .ngf-h4 {
         padding: 20px 15px;
@@ -29,7 +31,7 @@
         display: flex;
         flex-wrap: wrap;
         margin: 10px 0px;
-  
+
         .ngf-field-container {
           padding: 10px 15px;
           box-sizing: border-box;
@@ -37,4 +39,4 @@
       }
     }
   }
-  }
+}

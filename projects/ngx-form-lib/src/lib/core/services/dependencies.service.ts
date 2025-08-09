@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Dependency } from '../../shared/models/dependency.model';
@@ -13,7 +13,7 @@ export class DependenciesService {
     new BehaviorSubject<{ [key: string]: unknown }>({});
 
   setDependenciesFields(
-    group: FormGroup,
+    group: UntypedFormGroup,
     config: Field<unknown>,
     formValue: any
   ) {
@@ -38,7 +38,7 @@ export class DependenciesService {
     return this._hiddenFields.asObservable();
   }
 
-  setFieldPropertiesToDefault(group: FormGroup, config: Field<unknown>) {
+  setFieldPropertiesToDefault(group: UntypedFormGroup, config: Field<unknown>) {
     if (config.facets.disabled === true) {
       group.get(config.name)?.disable({ emitEvent: false });
     } else if (config.facets.disabled === false) {
@@ -50,7 +50,7 @@ export class DependenciesService {
   }
 
   disableDependentField(
-    group: FormGroup,
+    group: UntypedFormGroup,
     dependency: Dependency,
     controlName: string
   ): void {
@@ -68,7 +68,7 @@ export class DependenciesService {
   }
 
   setDependentValue(
-    group: FormGroup,
+    group: UntypedFormGroup,
     dependency: Dependency,
     controlName: string
   ): void {
