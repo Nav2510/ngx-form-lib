@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Dependency } from '../../shared/models/dependency.model';
 import { Field } from '../../shared/models/field.model';
+import { Section } from '../../shared/models/section.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class DependenciesService {
-  _hiddenFields: BehaviorSubject<{ [key: string]: unknown }> =
-    new BehaviorSubject<{ [key: string]: unknown }>({});
+  private readonly hiddenFields = new BehaviorSubject<Record<string, boolean>>(
+    {},
+  );
 
   setDependenciesFields(
     group: UntypedFormGroup,
     config: Field<unknown>,
-    formValue: any
+    formValue: any,
   ) {
     this.setFieldPropertiesToDefault(group, config);
     config.facets.dependencies?.forEach((dependency) => {
@@ -25,17 +25,48 @@ export class DependenciesService {
             this.setDependentValue(group, dependency, config.name);
             break;
           case 'disabled':
-            this.disableDependentField(group, dependency, config.name);
+            this.disableDependentField(
+              group,
+              dependency as Dependency<boolean>,
+              config.name,
+            );
             break;
           case 'hidden':
-            this.hideDependentField(config.name, dependency);
+            this.hideDependentField(
+              config.name,
+              dependency as Dependency<boolean>,
+            );
         }
       }
     });
   }
 
-  getHiddenFields(): Observable<{[key: string]: unknown}> {
-    return this._hiddenFields.asObservable();
+  get hiddenFields$(): Observable<Record<string, boolean>> {
+    return this.hiddenFields.asObservable();
+  }
+
+  /**
+   * Applies dependency rules (hidden, disabled, value-change) for every field using the
+   * current section values. Call once when the form is built (e.g. from FormComponent
+   * ngOnChanges) so state is correct before child field views run — avoids updating
+   * parent bindings during change detection.
+   */
+  applyInitialDependencyState(
+    sections: Section[],
+    form: UntypedFormGroup,
+  ): void {
+    this.hiddenFields.next({});
+    const sectionsArray = form.get('sections') as UntypedFormArray | null;
+    if (!sectionsArray) {
+      return;
+    }
+    sections.forEach((section, i) => {
+      const group = sectionsArray.at(i) as UntypedFormGroup;
+      const formValue = group.getRawValue();
+      for (const field of section.fields) {
+        this.setDependenciesFields(group, field, formValue);
+      }
+    });
   }
 
   setFieldPropertiesToDefault(group: UntypedFormGroup, config: Field<unknown>) {
@@ -45,32 +76,30 @@ export class DependenciesService {
       group.get(config.name)?.enable({ emitEvent: false });
     }
     if (config.facets.hidden === true || config.facets.hidden === false) {
-      this.hideDependentField(config.name, {} as Dependency, config.facets.hidden);
+      this.hideDependentField(
+        config.name,
+        {} as Dependency<boolean>,
+        config.facets.hidden,
+      );
     }
   }
 
   disableDependentField(
     group: UntypedFormGroup,
-    dependency: Dependency,
-    controlName: string
+    dependency: Dependency<boolean>,
+    controlName: string,
   ): void {
-    if (
-      dependency.setDependentValueTo === true ||
-      dependency.setDependentValueTo === 'true'
-    ) {
+    if (dependency.setDependentValueTo) {
       group.get(controlName)?.disable({ emitEvent: false });
-    } else if (
-      dependency.setDependentValueTo === false ||
-      dependency.setDependentValueTo === 'false'
-    ) {
+    } else {
       group.get(controlName)?.enable({ emitEvent: false });
     }
   }
 
   setDependentValue(
     group: UntypedFormGroup,
-    dependency: Dependency,
-    controlName: string
+    dependency: Dependency<unknown>,
+    controlName: string,
   ): void {
     group
       .get(controlName)
@@ -79,11 +108,14 @@ export class DependenciesService {
 
   hideDependentField(
     controlName: string,
-    dependency: Dependency,
-    hiddenProperty: boolean = false
+    dependency: Dependency<boolean>,
+    hiddenProperty: boolean = false,
   ): void {
-    const hiddenFields = this._hiddenFields.getValue();
-    hiddenFields[controlName] = dependency.setDependentValueTo || hiddenProperty;
-    this._hiddenFields.next(hiddenFields);
+    const hiddenValue: boolean =
+      dependency.setDependentValueTo || hiddenProperty;
+    this.hiddenFields.next({
+      ...this.hiddenFields.getValue(),
+      [controlName]: hiddenValue,
+    });
   }
 }

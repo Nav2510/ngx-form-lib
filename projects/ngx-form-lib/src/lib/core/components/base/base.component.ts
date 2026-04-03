@@ -1,12 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, Input, OnInit } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
+import { AutoUnsubscribe } from '../../../shared/decorators/auto-unsubscribe.decorator';
 import { Field } from '../../../shared/models/field.model';
 import { ParentConfig } from '../../../shared/models/parent-config.model';
 import { DependenciesService } from '../../services/dependencies.service';
-import { AutoUnsubscribe } from '../../../shared/decorators/auto-unsubscribe.decorator';
-import { Dependency } from '../../../shared/models/dependency.model';
 
 @Component({
   template: '',
@@ -17,7 +16,7 @@ export class BaseComponent<T = unknown> implements OnInit {
   @Input() group: UntypedFormGroup | null = null;
   @Input() parentConfig: ParentConfig | null = null;
 
-  subscription: Subscription = new Subscription();
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor(private readonly dependenciesService: DependenciesService) {}
 
@@ -26,23 +25,18 @@ export class BaseComponent<T = unknown> implements OnInit {
   }
 
   setupDependenciesControls(): void {
-    if (this.config?.facets.hidden) {
-      this.dependenciesService.hideDependentField(
-        this.config.name,
-        {} as Dependency,
-        this.config.facets.hidden
-      );
-    }
     if (this.config?.facets.dependencies) {
-      this.group?.valueChanges.subscribe((formValue) => {
-        this.config &&
-          this.group &&
-          this.dependenciesService.setDependenciesFields(
-            this.group,
-            this.config,
-            formValue
-          );
-      });
+      this.group?.valueChanges
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe((formValue) => {
+          this.config &&
+            this.group &&
+            this.dependenciesService.setDependenciesFields(
+              this.group,
+              this.config,
+              formValue,
+            );
+        });
     }
   }
 }

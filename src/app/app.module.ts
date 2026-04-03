@@ -6,15 +6,8 @@ import { AppComponent } from './app.component';
 import { FormLibModule } from 'ngx-form-lib';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormLibModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent],
+  imports: [BrowserModule, BrowserAnimationsModule, FormLibModule],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

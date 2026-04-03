@@ -1,7 +1,8 @@
 import {
-  ChangeDetectorRef,
   Component,
+  DestroyRef,
   EventEmitter,
+  inject,
   Input,
   OnInit,
   Output,
@@ -9,22 +10,25 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Config } from '../../../shared/models/config.model';
 import { FormsService } from '../../services/forms.service';
 import { DependenciesService } from '../../../core/services/dependencies.service';
 import { AutoUnsubscribe } from '../../../shared/decorators/auto-unsubscribe.decorator';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'ngx-form-lib',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  providers: [DependenciesService],
 })
 @AutoUnsubscribe()
 export class FormComponent implements OnInit {
   private _config: Config = {} as Config;
+  private readonly destroyRef = inject(DestroyRef);
 
   @Input() set config(configObj: Config | object) {
     this._config = configObj as Config;
@@ -38,32 +42,27 @@ export class FormComponent implements OnInit {
   @Output() formSubmit = new EventEmitter<void>();
 
   form: UntypedFormGroup = {} as UntypedFormGroup;
-  hiddenFields$: Observable<any> = this.dependenciesService.getHiddenFields();
-  private readonly destroy$ = new Subject<void>();
+  hiddenFields$: Observable<Record<string, unknown>> =
+    this.dependenciesService.hiddenFields$;
 
   constructor(
     private readonly formService: FormsService,
     private readonly dependenciesService: DependenciesService,
-    private readonly cdr: ChangeDetectorRef
-  ) {
-    this.hiddenFields$ = this.dependenciesService.getHiddenFields();
-  }
-
-  ngAfterContentChecked() {
-    this.cdr.detectChanges();
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.form.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
-      this.valueChanges.emit(this.form.value);
-    });
+    this.form.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.valueChanges.emit(this.form.value);
+      });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['config'].currentValue) {
-      this.form = this.formService.initForm(
-        changes['config'].currentValue.sections
-      );
+      const cfg = changes['config'].currentValue as Config;
+      this.form = this.formService.initForm(cfg.sections);
+      this.dependenciesService.applyInitialDependencyState(cfg.sections, this.form);
     }
   }
 
